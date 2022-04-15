@@ -979,7 +979,7 @@ Remember me
                 </a>
                 </div>
                 -->
-                <form id="collapseExample9" class="collapse checkout_coupon mt-4 p-4 bg-white border" method="post">
+                <div  id="collapseExample9" class="collapse checkout_coupon mt-4 p-4 bg-white border" >
                   <div class="row d-flex">
                     <p class="col-md-4 d-inline form-row form-row-first mb-3 mb-md-0">
                       <input type="text" name="coupon_code1" class="input-text form-control" placeholder="Coupon code" id="coupon_code1" value="">
@@ -989,7 +989,7 @@ Remember me
                     </p>
                   </div>
                   <div class="clear"></div>
-                </form>
+                </div>
                 <div name="checkout"  class="checkout woocommerce-checkout row mt-8"  enctype="multipart/form-data" novalidate="novalidate">
                   <div class="col2-set col-md-6 col-lg-7 col-xl-8 mb-6 mb-md-0" id="customer_details">
                     <div class="px-4 pt-5 bg-white border">
@@ -998,19 +998,15 @@ Remember me
                         <div class="woocommerce-billing-fields__field-wrapper row">
                           <p class="col-lg-6 mb-4d75 form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
                             <label for="billing_first_name" class="form-label">First name <abbr class="required" title="required">*</abbr></label>
-                            <input type="text" class="input-text form-control" name="billing_first_name" id="billing_first_name" placeholder="" value="" autocomplete="given-name" autofocus="autofocus">
+                            <input v-model="formData.firstname" type="text" class="input-text form-control" name="billing_first_name" id="billing_first_name" placeholder=""  autocomplete="given-name" autofocus="autofocus">
                           </p>
                           <p class="col-lg-6 mb-4d75 form-row form-row-last validate-required" id="billing_last_name_field" data-priority="20">
                             <label for="billing_last_name" class="form-label">Last name <abbr class="required" title="required">*</abbr></label>
-                            <input type="text" class="input-text form-control" name="billing_last_name" id="billing_last_name" placeholder="" value="" autocomplete="family-name">
-                          </p>
-                          <p class="col-12 mb-4d75 form-row form-row-wide" id="billing_company_field" data-priority="30">
-                            <label for="billing_company" class="form-label">Company name</label>
-                            <input type="text" class="input-text form-control" name="billing_company" id="billing_company" placeholder="" value="" autocomplete="organization">
+                            <input v-model="formData.lastname" type="text" class="input-text form-control" name="billing_last_name" id="billing_last_name" placeholder=""  autocomplete="family-name">
                           </p>
                           <p class="col-12 mb-4d75 form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated" id="billing_country_field" data-priority="40">
                             <label for="billing_country" class="form-label">Country <abbr class="required" title="required">*</abbr></label>
-                            <select name="billing_country" id="billing_country" class="form-control country_to_state country_select  select2-hidden-accessible" autocomplete="country" tabindex="-1" aria-hidden="true">
+                            <select v-model="formData.country" name="billing_country" id="billing_country" class="form-control country_to_state country_select  select2-hidden-accessible" autocomplete="country" tabindex="-1" aria-hidden="true">
                               <option value="">Select a country…</option>
                               <option value="AX">Åland Islands</option>
                               <option value="AF">Afghanistan</option>
@@ -1265,27 +1261,25 @@ Remember me
                           </p>
                           <p class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
                             <label for="billing_address_1" class="form-label">Street address <abbr class="required" title="required">*</abbr></label>
-                            <input type="text" class="input-text form-control" name="billing_address_1" id="billing_address_1" placeholder="House number and street name" value="" autocomplete="address-line1">
+                            <input v-model="formData.street" type="text" class="input-text form-control" name="billing_address_1" id="billing_address_1" placeholder="House number and street name"  autocomplete="address-line1">
                           </p>
-                          <p class="col-12 mb-4d75 form-row form-row-wide address-field" id="billing_address_2_field" data-priority="60">
-                            <input type="text" class="input-text form-control" name="billing_address_2" id="billing_address_2" placeholder="Apartment, suite, unit etc. (optional)" value="" autocomplete="address-line2">
-                          </p>
+
                           <p class="col-12 mb-4d75 form-row form-row-wide address-field validate-required" id="billing_city_field" data-priority="70" data-o_class="form-row form-row-wide address-field validate-required">
                             <label for="billing_city" class="form-label">Town / City <abbr class="required" title="required">*</abbr></label>
-                            <input type="text" class="input-text form-control" name="billing_city" id="billing_city" placeholder="" value="" autocomplete="address-level2">
+                            <input v-model="formData.city" type="text" class="input-text form-control" name="billing_city" id="billing_city" placeholder=""  autocomplete="address-level2">
                           </p>
                           <p class="col-12 mb-4d75 form-row form-row-wide address-field validate-state woocommerce-validated" id="billing_state_field" data-priority="80" data-o_class="form-row form-row-wide address-field validate-state">
                             <label for="billing_state" class="form-label">County</label>
-                            <input type="text" class="input-text form-control" value="" placeholder="" name="billing_state" id="billing_state" autocomplete="address-level1">
+                            <input v-model="formData.county" type="text" class="input-text form-control"  placeholder="" name="billing_state" id="billing_state" autocomplete="address-level1">
                           </p>
 
                           <p class="col-12 mb-4d75 form-row form-row-first validate-required validate-phone" id="billing_phone_field" data-priority="100">
                             <label for="billing_phone" class="form-label">Phone <abbr class="required" title="required">*</abbr></label>
-                            <input type="tel" class="input-text form-control" name="billing_phone" id="billing_phone" placeholder="" value="" autocomplete="tel">
+                            <input v-model="formData.phone" type="tel" class="input-text form-control" name="billing_phone" id="billing_phone" placeholder=""  autocomplete="tel">
                           </p>
                           <p class="col-12 mb-4d75 form-row form-row-last validate-required validate-email" id="billing_email_field" data-priority="110">
                             <label for="billing_email" class="form-label">Email address <abbr class="required" title="required">*</abbr></label>
-                            <input type="email" class="input-text form-control" name="billing_email" id="billing_email" placeholder="" value="" autocomplete="email">
+                            <input v-model="formData.email" type="email" class="input-text form-control" name="billing_email" id="billing_email" placeholder="" autocomplete="email">
                           </p>
                         </div>
                       </div>
@@ -1664,6 +1658,7 @@ Remember me
 import {defineComponent , computed,ref,reactive} from "vue";
 import {useStore} from "vuex";
 import {useRouter} from "vue-router";
+import axios from "axios";
 
 
 export default defineComponent({
@@ -1724,6 +1719,13 @@ export default defineComponent({
       $('#payment-modal').modal('show');
       // cash("#payment-modal").modal("hide");
     }
+    const checkoutDetails = () => {
+      axios.post('http://127.0.0.1:5000',formData).then(
+          response => {
+            console.log(response.data)
+          }
+      )
+    }
 
     return {
       store,
@@ -1736,7 +1738,8 @@ export default defineComponent({
       iframe_url,
       makePayment,
       closeModal,
-      showPaymentModal
+      showPaymentModal,
+      checkoutDetails
 
     }
   }

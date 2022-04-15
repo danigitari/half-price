@@ -81,7 +81,9 @@
                                 }' data-unfold-animation-in="fadeInRight" data-unfold-animation-out="fadeOutRight"
                  data-unfold-duration="500">
                 <span
-                    class="position-absolute bg-dark width-16 height-16 rounded-circle d-flex align-items-center justify-content-center text-white font-size-n9 right-0"> {{ total_cart_items }}</span>
+                    class="position-absolute bg-dark width-16 height-16 rounded-circle d-flex align-items-center justify-content-center text-white font-size-n9 right-0"> {{
+                    total_cart_items
+                  }}</span>
                 <i class="glph-icon flaticon-icon-126515"></i>
               </a>
 
@@ -143,17 +145,19 @@
 
                 <ul id="shopDropdownMenu" class="dropdown-unfold dropdown-menu font-size-2 rounded-0 border-gray-900"
                 >
-                  <li><a  @click="goToCart" class="dropdown-item link-black-100">Shop cart</a></li>
+                  <li><a @click="goToCart" class="dropdown-item link-black-100">Shop cart</a></li>
 
                 </ul>
               </li>
 
 
-              <li class="nav-item"><a @click="goToAbout" class="nav-link link-black-100 mx-4 px-0 py-5 font-weight-medium">About Us</a>
+              <li class="nav-item"><a @click="goToAbout"
+                                      class="nav-link link-black-100 mx-4 px-0 py-5 font-weight-medium">About Us</a>
               </li>
 
 
-              <li class="nav-item"><a @click="goToContact" class="nav-link link-black-100 mx-4 px-0 py-5 font-weight-medium">Contact Us</a>
+              <li class="nav-item"><a @click="goToContact"
+                                      class="nav-link link-black-100 mx-4 px-0 py-5 font-weight-medium">Contact Us</a>
               </li>
 
             </ul>
@@ -1089,19 +1093,23 @@ Remember me
                               <div class="js-quantity">
                                 <div class="d-flex align-items-center">
                                   <label class="screen-reader-text sr-only">Quantity</label>
-                                  <!--                                  <a class="js-minus text-dark" href="javascript:;">-->
-                                  <!--                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10px" height="1px">-->
-                                  <!--                                      <path fill-rule="evenodd" fill="rgb(22, 22, 25)" d="M-0.000,-0.000 L10.000,-0.000 L10.000,1.000 L-0.000,1.000 L-0.000,-0.000 Z" />-->
-                                  <!--                                    </svg>-->
-                                  <!--                                  </a>-->
+                                  <a @click="decreaseBookQuantity(book)" class="js-minus text-dark" href="javascript:;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         width="10px" height="1px">
+                                      <path fill-rule="evenodd" fill="rgb(22, 22, 25)"
+                                            d="M-0.000,-0.000 L10.000,-0.000 L10.000,1.000 L-0.000,1.000 L-0.000,-0.000 Z"/>
+                                    </svg>
+                                  </a>
                                   <input type="number"
                                          class="input-text qty text js-result form-control text-center border-0"
-                                         step="1" min="1" max="100" name="quantity" :value="book.quantity" title="Qty">
-                                  <!--                                  <a class="js-plus text-dark" href="javascript:;">-->
-                                  <!--                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="10px" height="10px">-->
-                                  <!--                                      <path fill-rule="evenodd" fill="rgb(22, 22, 25)" d="M10.000,5.000 L6.000,5.000 L6.000,10.000 L5.000,10.000 L5.000,5.000 L-0.000,5.000 L-0.000,4.000 L5.000,4.000 L5.000,-0.000 L6.000,-0.000 L6.000,4.000 L10.000,4.000 L10.000,5.000 Z" />-->
-                                  <!--                                    </svg>-->
-                                  <!--                                  </a>-->
+                                         step="1" min="1" max="100" name="quantity" v-model="book.quantity" title="Qty">
+                                  <a @click="increaseBookQuantity(book)" class="js-plus text-dark" href="javascript:;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                         width="10px" height="10px">
+                                      <path fill-rule="evenodd" fill="rgb(22, 22, 25)"
+                                            d="M10.000,5.000 L6.000,5.000 L6.000,10.000 L5.000,10.000 L5.000,5.000 L-0.000,5.000 L-0.000,4.000 L5.000,4.000 L5.000,-0.000 L6.000,-0.000 L6.000,4.000 L10.000,4.000 L10.000,5.000 Z"/>
+                                    </svg>
+                                  </a>
                                 </div>
                               </div>
                             </div>
@@ -1543,7 +1551,7 @@ export default defineComponent({
         store.getters.getTotalCost)
     const closeModal = () => {
 
-        $('#payment-modal').modal('hide');
+      $('#payment-modal').modal('hide');
 
       // cash("#payment-modal").modal("hide");
     }
@@ -1552,6 +1560,7 @@ export default defineComponent({
       $('#payment-modal').modal('hide');
 
     }
+
     const goToCart = () => {
       router.push("/halfprice_cart")
     }
@@ -1564,11 +1573,21 @@ export default defineComponent({
     const goToAbout = () => {
       router.push("/halfprice_about")
     }
-    const goToContact= () => {
+    const goToContact = () => {
       router.push("/halfprice_contact")
     }
-    const goToCheckout = ()=> {
+    const goToCheckout = () => {
       router.push("/halfprice_checkout")
+    }
+    const increaseBookQuantity = (book) => {
+      book.quantity ++
+      store.commit('ADD_TO_CART', book)
+
+    }
+    const decreaseBookQuantity = (book) => {
+      book.quantity --
+      store.commit('ADD_TO_CART', book)
+
     }
     return {
       store,
@@ -1587,6 +1606,8 @@ export default defineComponent({
       goToAbout,
       goToContact,
       goToCheckout,
+      increaseBookQuantity,
+      decreaseBookQuantity
 
     }
   }

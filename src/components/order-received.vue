@@ -33,7 +33,7 @@
                                     "background": "rgba(0, 0, 0, .7)",
                                     "animationSpeed": 500
                                 }' data-unfold-animation-in="fadeInRight" data-unfold-animation-out="fadeOutRight" data-unfold-duration="500">
-                <span class="position-absolute bg-dark width-16 height-16 rounded-circle d-flex align-items-center justify-content-center text-white font-size-n9 right-0">3</span>
+                <span class="position-absolute bg-dark width-16 height-16 rounded-circle d-flex align-items-center justify-content-center text-white font-size-n9 right-0">{{ books_in_cart }}</span>
                 <i class="glph-icon flaticon-icon-126515"></i>
               </a>
 
@@ -961,8 +961,8 @@ Remember me
                   <tbody>
                   <tr>
                     <th scope="row" class="pr-0 py-0 font-weight-medium">1779</th>
-                    <td class="pr-0 py-0 font-weight-medium">March 24, 2020</td>
-                    <td class="pr-0 py-0 font-weight-medium text-md-center">$2930</td>
+                    <td class="pr-0 py-0 font-weight-medium">April 15, 2022</td>
+                    <td class="pr-0 py-0 font-weight-medium text-md-center"> ${{ subtotal }}</td>
                     <td class="pr-md-4 py-0 font-weight-medium text-md-right">Direct bank transfer</td>
                   </tr>
                   </tbody>
@@ -973,26 +973,17 @@ Remember me
               <div class="px-3 px-md-4">
                 <div class="ml-md-2">
                   <h6 class="font-size-3 on-weight-medium mb-4 pb-1">Order Details</h6>
-                  <div class="d-flex justify-content-between mb-4">
+                  <div class="d-flex justify-content-between mb-4" v-for="book in books" :key="book.id">
                     <div class="d-flex align-items-baseline">
                       <div>
-                        <h6 class="font-size-2 font-weight-normal mb-1">The Overdue Life of <br> Amy Byler</h6>
+                        <h6 class="font-size-2 font-weight-normal mb-1"> {{ book.title}}</h6>
                         <span class="font-size-2 text-gray-600">(Paperback, English)</span>
                       </div>
-                      <span class="font-size-2 ml-4 ml-md-8">x7</span>
+                      <span class="font-size-2 ml-4 ml-md-8">x{{ book.quantity }}</span>
                     </div>
-                    <span class="font-weight-medium font-size-2">$951</span>
+                    <span class="font-weight-medium font-size-2">${{ book.price }} * {{ book.quantity}}</span>
                   </div>
-                  <div class="d-flex justify-content-between">
-                    <div class="d-flex align-items-baseline">
-                      <div>
-                        <h6 class="font-size-2 font-weight-normal mb-1">All You Can Ever Know: <br> A Memoir</h6>
-                        <span class="font-size-2 text-gray-600">(Paperback, English)</span>
-                      </div>
-                      <span class="font-size-2 ml-2 ml-md-6">x3</span>
-                    </div>
-                    <span class="font-weight-medium font-size-2">$348</span>
-                  </div>
+
                 </div>
               </div>
             </div>
@@ -1000,7 +991,7 @@ Remember me
               <ul class="list-unstyled px-3 pl-md-5 pr-md-4 mb-0">
                 <li class="d-flex justify-content-between py-2">
                   <span class="font-weight-medium font-size-2">Subtotal:</span>
-                  <span class="font-weight-medium font-size-2">$951</span>
+                  <span class="font-weight-medium font-size-2">${{ subtotal }}</span>
                 </li>
                 <li class="d-flex justify-content-between py-2">
                   <span class="font-weight-medium font-size-2">Shipping:</span>
@@ -1016,7 +1007,7 @@ Remember me
               <div class="px-3 pl-md-5 pr-md-4">
                 <div class="d-flex justify-content-between">
                   <span class="font-size-2 font-weight-medium">Total</span>
-                  <span class="font-weight-medium fon-size-2">$2498</span>
+                  <span class="font-weight-medium fon-size-2">${{ subtotal }}</span>
                 </div>
               </div>
             </div>
@@ -1247,5 +1238,138 @@ Remember me
   </body>
 </template>
 <script>
+import Toastify from 'toastify-js'
 
+import {useRouter} from 'vue-router'
+import {onMounted, ref, defineComponent, computed,} from "vue";
+import CategoriesService from "../services/categories.service";
+import {useStore} from 'vuex'
+
+
+export default defineComponent({
+
+  setup: function () {
+
+    const store = useStore()
+    const router = useRouter()
+    const products = [
+      {
+        id: '1',
+        title: 'book one',
+        author: 'jay shetty',
+        quantity: 0,
+        price: 300,
+      },
+      {
+        id: '2',
+        title: 'book two',
+        author: 'jay shetty',
+        quantity: 0,
+        price: 300,
+      },
+      {
+        id: '3',
+        title: 'book three',
+        author: 'jay shetty',
+        quantity: 0,
+        price: 300,
+      },
+      {
+        id: '4',
+        title: 'book four',
+        author: 'jay shetty',
+        quantity: 0,
+        price: 300,
+      },
+      {
+        id: '5',
+        title: 'book five',
+        author: 'jay shetty',
+        quantity: 0,
+        price: 300,
+      },
+      {
+        id: '6',
+        title: 'book six',
+        author: 'jay shetty',
+        quantity: 0,
+        price: 250,
+      }
+    ]
+    const categories = ref()
+    const cart = ref([])
+    const goToCart = () => {
+      router.push("/halfprice_cart")
+    }
+    const goToShop = () => {
+      router.push("/halfprice_shop")
+    }
+    const goToHome = () => {
+      router.push("/")
+    }
+    const goToAbout = () => {
+      router.push("/halfprice_about")
+    }
+    const goToContact = () => {
+      router.push("/halfprice_contact")
+    }
+    const addToCart = (book) => {
+      book.quantity++
+      store.commit('ADD_TO_CART', book)
+      Toastify({
+        text: "successfully added to cart",
+        duration: 3000,
+        newWindow: true,
+        close: true,
+        gravity: "top",
+        position: "right",
+        stopOnFocus: true,
+      }).showToast();
+      console.log(books)
+      console.log(books_in_cart)
+    }
+    const books_in_cart = computed(() =>
+        store.getters.getTotalCartItems
+    )
+    const removeFromCart = (book) => {
+      store.commit('REMOVE_FROM_CART', book)
+    }
+    const fetchCategories = async () => {
+      CategoriesService.fetchCategories().then(response => {
+        console.log(response.data)
+      })
+    }
+    const books = computed(() =>
+        store.getters.getCartItems)
+
+    const subtotal = computed(() =>
+        store.getters.getTotalCost
+    )
+
+
+    onMounted(() => {
+      fetchCategories()
+
+
+    })
+    return {
+      router,
+      books,
+      removeFromCart,
+      fetchCategories,
+      categories,
+      products,
+      cart,
+      addToCart,
+      subtotal,
+      books_in_cart,
+      goToHome,
+      goToShop,
+      goToCart,
+      goToAbout,
+      goToContact
+
+    }
+  }
+})
 </script>
