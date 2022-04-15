@@ -1176,7 +1176,7 @@ Remember me
                   <tr class="cart-subtotal">
                     <th>Subtotal</th>
                     <td data-title="Subtotal"><span class="woocommerce-Price-amount amount"><span
-                        class="woocommerce-Price-currencySymbol">£</span>79.99</span></td>
+                        class="woocommerce-Price-currencySymbol">£</span>{{ subtotal }}</span></td>
                   </tr>
                   <tr class="order-shipping">
                     <th>Shipping</th>
@@ -1266,7 +1266,7 @@ Remember me
                 <tr class="order-total">
                   <th>Total</th>
                   <td data-title="Total"><strong><span class="woocommerce-Price-amount amount"><span
-                      class="woocommerce-Price-currencySymbol">£</span>97.99</span></strong></td>
+                      class="woocommerce-Price-currencySymbol">£</span>{{ subtotal }}</span></strong></td>
                 </tr>
                 </tbody>
               </table>
