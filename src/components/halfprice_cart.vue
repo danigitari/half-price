@@ -1568,7 +1568,7 @@ export default defineComponent({
       router.push("/halfprice_shop")
     }
     const goToHome = () => {
-      router.push("/")
+      router.push({ name : "halfprice_home" , params: { reload : true }})
     }
     const goToAbout = () => {
       router.push("/halfprice_about")

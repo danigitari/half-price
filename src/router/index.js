@@ -16,7 +16,8 @@ const routes = [
     {
         path:'/',
         name:'halfprice_home',
-        component:Home
+        component:Home,
+        props:true
 
     },
     {

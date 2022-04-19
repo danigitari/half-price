@@ -2753,6 +2753,7 @@ Limuru Road, Village Market, New Wing, Nairobi, Kenya.
           </div>
         </div>
       </div>
+
       <div class="space-1">
         <div class="container">
           <div class="d-lg-flex text-center text-lg-left justify-content-between align-items-center">
@@ -2792,13 +2793,13 @@ Limuru Road, Village Market, New Wing, Nairobi, Kenya.
 import Toastify from 'toastify-js'
 
 import {useRouter} from 'vue-router'
-import {onMounted, ref, defineComponent, computed,} from "vue";
+import {onMounted, ref, defineComponent, computed, watch } from "vue";
 import CategoriesService from "../services/categories.service";
 import {useStore} from 'vuex'
 
 
 export default defineComponent({
-
+  props : ['reload'],
   setup: function () {
 
     const store = useStore()
@@ -2882,12 +2883,21 @@ export default defineComponent({
     const books_in_cart = computed(() =>
         store.getters.getTotalCartItems
     )
+
     const removeFromCart = (book) => {
       store.commit('REMOVE_FROM_CART', book)
     }
+    const reload = ref(false)
+
     const fetchCategories = async () => {
       CategoriesService.fetchCategories().then(response => {
         console.log(response.data)
+        reload.value = true
+        if(reload.value == true){
+          // window.location.reload()
+
+        }
+        reload.value = false
       })
     }
     const books = computed(() =>
@@ -2902,7 +2912,19 @@ export default defineComponent({
       fetchCategories()
 
 
+
     })
+    // watch (
+    //     ()=> props.reload,
+    //     ()=> {
+    //       if(props.reload == true){
+    //
+    //         window.location.reload()
+    //       }
+    //     }
+    // )
+
+
     return {
       router,
       books,
@@ -2918,7 +2940,7 @@ export default defineComponent({
       goToShop,
       goToCart,
       goToAbout,
-      goToContact
+      goToContact,
 
     }
   }
