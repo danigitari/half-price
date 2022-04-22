@@ -946,7 +946,7 @@ Remember me
         </div>
         <div class="max-width-890 mx-auto">
           <div class="bg-white pt-6 border">
-            <h6 class="font-size-3 font-weight-medium text-center mb-4 pb-xl-1">Thank you. Your order has been received.</h6>
+            <h6 class="font-size-3 font-weight-medium text-center mb-4 pb-xl-1">Thank you. Your order has been received. You will receive an email once payment is confirmed</h6>
             <div class="border-bottom mb-5 pb-5 overflow-auto overflow-md-visible">
               <div class="pl-3">
                 <table class="table table-borderless mb-0 ml-1">
@@ -955,15 +955,15 @@ Remember me
                     <th scope="col" class="font-size-2 font-weight-normal py-0">Order number:</th>
                     <th scope="col" class="font-size-2 font-weight-normal py-0">Date:</th>
                     <th scope="col" class="font-size-2 font-weight-normal py-0 text-md-center">Total: </th>
-                    <th scope="col" class="font-size-2 font-weight-normal py-0 text-md-right pr-md-9">Payment method:</th>
+
                   </tr>
                   </thead>
                   <tbody>
                   <tr>
                     <th scope="row" class="pr-0 py-0 font-weight-medium">1779</th>
-                    <td class="pr-0 py-0 font-weight-medium">April 15, 2022</td>
+                    <td class="pr-0 py-0 font-weight-medium">April 22, 2022</td>
                     <td class="pr-0 py-0 font-weight-medium text-md-center"> ${{ subtotal }}</td>
-                    <td class="pr-md-4 py-0 font-weight-medium text-md-right">Direct bank transfer</td>
+
                   </tr>
                   </tbody>
                 </table>

@@ -45,17 +45,17 @@
       <div class="container-fluid px-2 px-md-5 px-xl-8d75">
         <div class="topbar__nav d-md-flex justify-content-between align-items-center">
           <ul class="topbar__nav--left nav ml-md-n3">
-            <li class="nav-item"><a href="index.html#" class="nav-link link-black-100"><i
+            <li class="nav-item"><a href="#" class="nav-link link-black-100"><i
                 class="glph-icon flaticon-question mr-2"></i>Can we help you?</a></li>
             <li class="nav-item"><a href="tel:+1246-345-0695" class="nav-link link-black-100"><i
                 class="glph-icon flaticon-phone mr-2"></i>+254 703 647424</a></li>
           </ul>
           <ul class="topbar__nav--right nav mr-md-n3">
-            <li class="nav-item"><a href="index.html#" class="nav-link link-black-100"><i
+            <li class="nav-item"><a href="#" class="nav-link link-black-100"><i
                 class="glph-icon flaticon-pin"></i></a></li>
-            <li class="nav-item"><a href="index.html#" class="nav-link link-black-100"><i
+            <li class="nav-item"><a href="#" class="nav-link link-black-100"><i
                 class="glph-icon flaticon-switch"></i></a></li>
-            <li class="nav-item"><a href="index.html#" class="nav-link link-black-100"><i
+            <li class="nav-item"><a href="#" class="nav-link link-black-100"><i
                 class="glph-icon flaticon-heart"></i></a></li>
             <!--
             <li class="nav-item">
@@ -117,14 +117,14 @@
             </a>
           </div>
           <div class="site-branding pr-md-4">
-            <a href="index.html" class="d-block mb-1">
+            <a href="" class="d-block mb-1">
               <img width="50%" src="assets/img/hfb_logo.webp">
             </a>
           </div>
           <div class="site-navigation mr-auto d-none d-xl-block">
             <ul class="nav">
               <li class="nav-item active">
-                <a href="index.html#"
+                <a href="#"
                    class="nav-link link-black-100 mx-4 px-0 py-5 active font-weight-medium d-flex align-items-center ">
                   Home
                 </a>
@@ -406,17 +406,17 @@
 
               <div class="px-4 py-5 px-md-6 border-bottom" v-for="book in books" :key="book.id">
                 <div class="media">
-                  <a href="index.html#" class="d-block"><img src="https://placehold.it/100x153" class="img-fluid"
+                  <a href="#" class="d-block"><img src="https://placehold.it/100x153" class="img-fluid"
                                                              alt="image-description"></a>
                   <div class="media-body ml-4d875">
-                    <div class="text-primary text-uppercase font-size-1 mb-1 text-truncate"><a href="index.html#">Hard
+                    <div class="text-primary text-uppercase font-size-1 mb-1 text-truncate"><a href="#">Hard
                       Cover</a></div>
                     <h2 class="woocommerce-loop-product__title h6 text-lh-md mb-1 text-height-2 crop-text-2">
-                      <a href="index.html#" class="text-dark">{{
+                      <a href="#" class="text-dark">{{
                           book.title
                         }}</a>
                     </h2>
-                    <div class="font-size-2 mb-1 text-truncate"><a href="index.html#" class="text-gray-700">
+                    <div class="font-size-2 mb-1 text-truncate"><a href="#" class="text-gray-700">
                       {{ book.author }}</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount">{{ book.quantity }} x <span
@@ -424,7 +424,7 @@
                     </div>
                   </div>
                   <div class="mt-3 ml-3">
-                    <a href="index.html#" class="text-dark"><i class="fas fa-times"></i></a>
+                    <a href="#" class="text-dark"><i class="fas fa-times"></i></a>
                   </div>
                 </div>
               </div>
@@ -473,21 +473,21 @@
                 <div class="zeynep pt-4">
                   <ul>
                     <li class="has-submenu">
-                      <a href="index.html#" data-submenu="off-pages">Pages</a>
+                      <a href="#" data-submenu="off-pages">Pages</a>
                       <div id="off-pages" class="submenu">
                         <div class="submenu-header" data-submenu-close="off-pages">
-                          <a href="index.html#">Pages</a>
+                          <a href="#">Pages</a>
                         </div>
                         <ul>
                           <li class="has-submenu">
-                            <a href="index.html#" data-submenu="off-home">Home Pages</a>
+                            <a href="#" data-submenu="off-home">Home Pages</a>
                             <div id="off-home" class="submenu js-scrollbar">
                               <div class="submenu-header" data-submenu-close="off-home">
-                                <a href="index.html#">Home Pages</a>
+                                <a href="#">Home Pages</a>
                               </div>
                               <ul class="">
                                 <li>
-                                  <a href="index.html">Home v1</a>
+                                  <a href="">Home v1</a>
                                 </li>
                                 <li>
                                   <a href="home-v2.html">Home v2</a>
@@ -532,10 +532,10 @@
                             </div>
                           </li>
                           <li class="has-submenu">
-                            <a href="index.html#" data-submenu="off-single-product">Single Product</a>
+                            <a href="#" data-submenu="off-single-product">Single Product</a>
                             <div id="off-single-product" class="submenu js-scrollbar">
                               <div class="submenu-header" data-submenu-close="off-single-product">
-                                <a href="index.html#">Single Product</a>
+                                <a href="#">Single Product</a>
                               </div>
                               <ul class="">
                                 <li>
@@ -563,10 +563,10 @@
                             </div>
                           </li>
                           <li class="has-submenu">
-                            <a href="index.html#" data-submenu="off-shop-pages">Shop Pages</a>
+                            <a href="#" data-submenu="off-shop-pages">Shop Pages</a>
                             <div id="off-shop-pages" class="submenu js-scrollbar">
                               <div class="submenu-header" data-submenu-close="off-shop-pages">
-                                <a href="index.html#">Shop Pages</a>
+                                <a href="#">Shop Pages</a>
                               </div>
                               <ul class="">
                                 <li>
@@ -591,10 +591,10 @@
                             </div>
                           </li>
                           <li class="has-submenu">
-                            <a href="index.html#" data-submenu="off-shop-list">Shop List</a>
+                            <a href="#" data-submenu="off-shop-list">Shop List</a>
                             <div id="off-shop-list" class="submenu js-scrollbar">
                               <div class="submenu-header" data-submenu-close="off-shop-list">
-                                <a href="index.html#">Shop List</a>
+                                <a href="#">Shop List</a>
                               </div>
                               <ul class="">
                                 <li>
@@ -628,10 +628,10 @@
                             </div>
                           </li>
                           <li class="has-submenu">
-                            <a href="index.html#" data-submenu="off-blog">Blog</a>
+                            <a href="#" data-submenu="off-blog">Blog</a>
                             <div id="off-blog" class="submenu js-scrollbar">
                               <div class="submenu-header" data-submenu-close="off-blog">
-                                <a href="index.html#">Blog</a>
+                                <a href="#">Blog</a>
                               </div>
                               <ul class="">
                                 <li>
@@ -650,10 +650,10 @@
                             </div>
                           </li>
                           <li class="has-submenu">
-                            <a href="index.html#" data-submenu="off-others">Others</a>
+                            <a href="#" data-submenu="off-others">Others</a>
                             <div id="off-others" class="submenu js-scrollbar">
                               <div class="submenu-header" data-submenu-close="off-others">
-                                <a href="index.html#">Others</a>
+                                <a href="#">Others</a>
                               </div>
                               <ul class="">
                                 <li>
@@ -687,278 +687,278 @@
                             </div>
                           </li>
                           <li class="px-5">
-                            <a href="../../documentation/index.html"
+                            <a href="../../documentation/"
                                class="btn btn-primary mb-3 mb-md-0 mb-xl-3 mt-4 font-size-2 btn-block">Documentation</a>
                           </li>
                           <li class="px-5 mb-4">
-                            <a href="../../starter/index.html" class="btn btn-secondary font-size-2 btn-block mb-2">Starter</a>
+                            <a href="../../starter/" class="btn btn-secondary font-size-2 btn-block mb-2">Starter</a>
                           </li>
                         </ul>
                       </div>
                     </li>
                     <li class="has-submenu">
-                      <a href="index.html#" data-submenu="art-photo">Arts & Photography</a>
+                      <a href="#" data-submenu="art-photo">Arts & Photography</a>
                       <div id="art-photo" class="submenu">
                         <div class="submenu-header" data-submenu-close="art-photo">
-                          <a href="index.html#">Arts & Photography</a>
+                          <a href="#">Arts & Photography</a>
                         </div>
                         <ul>
                           <li>
-                            <a href="index.html#">Architecture</a>
+                            <a href="#">Architecture</a>
                           </li>
                           <li>
-                            <a href="index.html#">Business of Art</a>
+                            <a href="#">Business of Art</a>
                           </li>
                           <li>
-                            <a href="index.html#">Collections, Catalogs & Exhibitions</a>
+                            <a href="#">Collections, Catalogs & Exhibitions</a>
                           </li>
                           <li>
-                            <a href="index.html#">Decorative Arts & Design</a>
+                            <a href="#">Decorative Arts & Design</a>
                           </li>
                           <li>
-                            <a href="index.html#">Drawing</a>
+                            <a href="#">Drawing</a>
                           </li>
                           <li>
-                            <a href="index.html#">Fashion</a>
+                            <a href="#">Fashion</a>
                           </li>
                           <li>
-                            <a href="index.html#">Graphic Design</a>
+                            <a href="#">Graphic Design</a>
                           </li>
                         </ul>
                       </div>
                     </li>
                     <li class="has-submenu">
-                      <a href="index.html#" data-submenu="biography">Biographies & Memoirs</a>
+                      <a href="#" data-submenu="biography">Biographies & Memoirs</a>
                       <div id="biography" class="submenu">
                         <div class="submenu-header" data-submenu-close="biography">
-                          <a href="index.html#">Biographies & Memoirs</a>
+                          <a href="#">Biographies & Memoirs</a>
                         </div>
                         <ul>
                           <li>
-                            <a href="index.html#">Istanbul</a>
+                            <a href="#">Istanbul</a>
                           </li>
                           <li>
-                            <a href="index.html#">Mardin</a>
+                            <a href="#">Mardin</a>
                           </li>
                           <li>
-                            <a href="index.html#">Amed</a>
+                            <a href="#">Amed</a>
                           </li>
                         </ul>
                       </div>
                     </li>
                     <li class="has-submenu">
-                      <a href="index.html#" data-submenu="children">Children's Books</a>
+                      <a href="#" data-submenu="children">Children's Books</a>
                       <div id="children" class="submenu">
                         <div class="submenu-header" data-submenu-close="children">
-                          <a href="index.html#">Children's Books</a>
+                          <a href="#">Children's Books</a>
                         </div>
                         <ul>
                           <li class="has-submenu">
-                            <a href="index.html#" data-submenu="electronics">Electronics</a>
+                            <a href="#" data-submenu="electronics">Electronics</a>
                             <div id="electronics" class="submenu js-scrollbar">
                               <div class="submenu-header" data-submenu-close="electronics">
-                                <a href="index.html#">Electronics</a>
+                                <a href="#">Electronics</a>
                               </div>
                               <ul class="">
                                 <li>
-                                  <a href="index.html#">Camera & Photo</a>
+                                  <a href="#">Camera & Photo</a>
                                 </li>
                                 <li>
-                                  <a href="index.html#">Home Audio</a>
+                                  <a href="#">Home Audio</a>
                                 </li>
                                 <li>
-                                  <a href="index.html#">Tv & Video</a>
+                                  <a href="#">Tv & Video</a>
                                 </li>
                                 <li>
-                                  <a href="index.html#">Computers & Accessories</a>
+                                  <a href="#">Computers & Accessories</a>
                                 </li>
                                 <li>
-                                  <a href="index.html#">Car & Vehicle Electronics</a>
+                                  <a href="#">Car & Vehicle Electronics</a>
                                 </li>
                                 <li>
-                                  <a href="index.html#">Portable Audio & Video</a>
+                                  <a href="#">Portable Audio & Video</a>
                                 </li>
                                 <li>
-                                  <a href="index.html#">Headphones</a>
+                                  <a href="#">Headphones</a>
                                 </li>
                                 <li>
-                                  <a href="index.html#">Accessories & Supplies</a>
+                                  <a href="#">Accessories & Supplies</a>
                                 </li>
                                 <li>
-                                  <a href="index.html#">Video Projectors</a>
+                                  <a href="#">Video Projectors</a>
                                 </li>
                                 <li>
-                                  <a href="index.html#">Office Electronics</a>
+                                  <a href="#">Office Electronics</a>
                                 </li>
                                 <li>
-                                  <a href="index.html#">Wearable Technology</a>
+                                  <a href="#">Wearable Technology</a>
                                 </li>
                                 <li>
-                                  <a href="index.html#">Service Plans</a>
+                                  <a href="#">Service Plans</a>
                                 </li>
                               </ul>
                             </div>
                           </li>
                           <li>
-                            <a href="index.html#">Books</a>
+                            <a href="#">Books</a>
                           </li>
                           <li>
-                            <a href="index.html#">Video Games</a>
+                            <a href="#">Video Games</a>
                           </li>
                           <li>
-                            <a href="index.html#">Computers</a>
+                            <a href="#">Computers</a>
                           </li>
                         </ul>
                       </div>
                     </li>
                     <li class="has-submenu">
-                      <a href="index.html#" data-submenu="computers">Computers & Technology</a>
+                      <a href="#" data-submenu="computers">Computers & Technology</a>
                       <div id="computers" class="submenu">
                         <div class="submenu-header" data-submenu-close="computers">
-                          <a href="index.html#">Computers & Technology</a>
+                          <a href="#">Computers & Technology</a>
                         </div>
                         <ul>
                           <li>
-                            <a href="index.html#">Istanbul</a>
+                            <a href="#">Istanbul</a>
                           </li>
                           <li>
-                            <a href="index.html#">Mardin</a>
+                            <a href="#">Mardin</a>
                           </li>
                           <li>
-                            <a href="index.html#">Amed</a>
+                            <a href="#">Amed</a>
                           </li>
                         </ul>
                       </div>
                     </li>
                     <li class="has-submenu">
-                      <a href="index.html#" data-submenu="cookbook">Cookbooks, Food & Wine</a>
+                      <a href="#" data-submenu="cookbook">Cookbooks, Food & Wine</a>
                       <div id="cookbook" class="submenu">
                         <div class="submenu-header" data-submenu-close="cookbook">
-                          <a href="index.html#">Cookbooks, Food & Wine</a>
+                          <a href="#">Cookbooks, Food & Wine</a>
                         </div>
                         <ul>
                           <li>
-                            <a href="index.html#">Istanbul</a>
+                            <a href="#">Istanbul</a>
                           </li>
                           <li>
-                            <a href="index.html#">Mardin</a>
+                            <a href="#">Mardin</a>
                           </li>
                           <li>
-                            <a href="index.html#">Amed</a>
+                            <a href="#">Amed</a>
                           </li>
                         </ul>
                       </div>
                     </li>
                     <li class="has-submenu">
-                      <a href="index.html#" data-submenu="sciencemath">Education & Teaching</a>
+                      <a href="#" data-submenu="sciencemath">Education & Teaching</a>
                       <div id="sciencemath" class="submenu">
                         <div class="submenu-header" data-submenu-close="sciencemath">
-                          <a href="index.html#">Education & Teaching</a>
+                          <a href="#">Education & Teaching</a>
                         </div>
                         <ul>
                           <li>
-                            <a href="index.html#">Istanbul</a>
+                            <a href="#">Istanbul</a>
                           </li>
                           <li>
-                            <a href="index.html#">Mardin</a>
+                            <a href="#">Mardin</a>
                           </li>
                           <li>
-                            <a href="index.html#">Amed</a>
+                            <a href="#">Amed</a>
                           </li>
                         </ul>
                       </div>
                     </li>
                     <li class="has-submenu">
-                      <a href="index.html#" data-submenu="health">Health, Fitness & Dieting</a>
+                      <a href="#" data-submenu="health">Health, Fitness & Dieting</a>
                       <div id="health" class="submenu">
                         <div class="submenu-header" data-submenu-close="health">
-                          <a href="index.html#">Health, Fitness & Dieting</a>
+                          <a href="#">Health, Fitness & Dieting</a>
                         </div>
                         <ul>
                           <li>
-                            <a href="index.html#">Istanbul</a>
+                            <a href="#">Istanbul</a>
                           </li>
                           <li>
-                            <a href="index.html#">Mardin</a>
+                            <a href="#">Mardin</a>
                           </li>
                           <li>
-                            <a href="index.html#">Amed</a>
+                            <a href="#">Amed</a>
                           </li>
                         </ul>
                       </div>
                     </li>
                     <li class="has-submenu">
-                      <a href="index.html#" data-submenu="history">History</a>
+                      <a href="#" data-submenu="history">History</a>
                       <div id="history" class="submenu">
                         <div class="submenu-header" data-submenu-close="history">
-                          <a href="index.html#">History</a>
+                          <a href="#">History</a>
                         </div>
                         <ul>
                           <li>
-                            <a href="index.html#">Istanbul</a>
+                            <a href="#">Istanbul</a>
                           </li>
                           <li>
-                            <a href="index.html#">Mardin</a>
+                            <a href="#">Mardin</a>
                           </li>
                           <li>
-                            <a href="index.html#">Amed</a>
+                            <a href="#">Amed</a>
                           </li>
                         </ul>
                       </div>
                     </li>
                     <li class="has-submenu">
-                      <a href="index.html#" data-submenu="romance">Romance</a>
+                      <a href="#" data-submenu="romance">Romance</a>
                       <div id="romance" class="submenu">
                         <div class="submenu-header" data-submenu-close="romance">
-                          <a href="index.html#">Romance</a>
+                          <a href="#">Romance</a>
                         </div>
                         <ul>
                           <li>
-                            <a href="index.html#">Istanbul</a>
+                            <a href="#">Istanbul</a>
                           </li>
                           <li>
-                            <a href="index.html#">Mardin</a>
+                            <a href="#">Mardin</a>
                           </li>
                           <li>
-                            <a href="index.html#">Amed</a>
+                            <a href="#">Amed</a>
                           </li>
                         </ul>
                       </div>
                     </li>
                     <li class="has-submenu">
-                      <a href="index.html#" data-submenu="sports">Sports & Outdoors</a>
+                      <a href="#" data-submenu="sports">Sports & Outdoors</a>
                       <div id="sports" class="submenu">
                         <div class="submenu-header" data-submenu-close="sports">
-                          <a href="index.html#">Sports & Outdoors</a>
+                          <a href="#">Sports & Outdoors</a>
                         </div>
                         <ul>
                           <li>
-                            <a href="index.html#">Istanbul</a>
+                            <a href="#">Istanbul</a>
                           </li>
                           <li>
-                            <a href="index.html#">Mardin</a>
+                            <a href="#">Mardin</a>
                           </li>
                           <li>
-                            <a href="index.html#">Amed</a>
+                            <a href="#">Amed</a>
                           </li>
                         </ul>
                       </div>
                     </li>
                     <li class="has-submenu">
-                      <a href="index.html#" data-submenu="travel">Travel</a>
+                      <a href="#" data-submenu="travel">Travel</a>
                       <div id="travel" class="submenu">
                         <div class="submenu-header" data-submenu-close="travel">
-                          <a href="index.html#">Travel</a>
+                          <a href="#">Travel</a>
                         </div>
                         <ul>
                           <li>
-                            <a href="index.html#">Istanbul</a>
+                            <a href="#">Istanbul</a>
                           </li>
                           <li>
-                            <a href="index.html#">Mardin</a>
+                            <a href="#">Mardin</a>
                           </li>
                           <li>
-                            <a href="index.html#">Amed</a>
+                            <a href="#">Amed</a>
                           </li>
                         </ul>
                       </div>
@@ -969,10 +969,10 @@
               <div class="px-4 px-md-5 pt-5 pb-4 border-bottom">
                 <h2 class="font-size-3 mb-3">HELP & SETTINGS </h2>
                 <ul class="list-group list-group-flush list-group-borderless">
-                  <li class="list-group-item px-0 py-2 border-0"><a href="index.html#" class="h-primary">Your
+                  <li class="list-group-item px-0 py-2 border-0"><a href="#" class="h-primary">Your
                     Account</a></li>
-                  <li class="list-group-item px-0 py-2 border-0"><a href="index.html#" class="h-primary">Help</a></li>
-                  <li class="list-group-item px-0 py-2 border-0"><a href="index.html#" class="h-primary">Sign In</a>
+                  <li class="list-group-item px-0 py-2 border-0"><a href="#" class="h-primary">Help</a></li>
+                  <li class="list-group-item px-0 py-2 border-0"><a href="#" class="h-primary">Sign In</a>
                   </li>
                 </ul>
               </div>
@@ -992,22 +992,22 @@
 
                 <ul class="list-inline mb-0">
                   <li class="list-inline-item">
-                    <a class="h-primary pr-2 font-size-2" href="index.html#">
+                    <a class="h-primary pr-2 font-size-2" href="#">
                       <span class="fab fa-facebook-f btn-icon__inner"></span>
                     </a>
                   </li>
                   <li class="list-inline-item">
-                    <a class="h-primary pr-2 font-size-2" href="index.html#">
+                    <a class="h-primary pr-2 font-size-2" href="#">
                       <span class="fab fa-google btn-icon__inner"></span>
                     </a>
                   </li>
                   <li class="list-inline-item">
-                    <a class="h-primary pr-2 font-size-2" href="index.html#">
+                    <a class="h-primary pr-2 font-size-2" href="#">
                       <span class="fab fa-twitter btn-icon__inner"></span>
                     </a>
                   </li>
                   <li class="list-inline-item">
-                    <a class="h-primary pr-2 font-size-2" href="index.html#">
+                    <a class="h-primary pr-2 font-size-2" href="#">
                       <span class="fab fa-github btn-icon__inner"></span>
                     </a>
                   </li>
@@ -1607,7 +1607,7 @@
           <div class="row">
             <div class="col-lg-4 mb-6 mb-lg-0">
               <div class="pb-6">
-                <a href="../home/index.html" class="d-inline-block mb-5">
+                <a href="../home/" class="d-inline-block mb-5">
                   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="170px"
                        height="30px">
                     <path fill-rule="evenodd" fill="rgb(25, 17, 11)"
@@ -1815,7 +1815,7 @@ export default defineComponent({
         store.getters.getTotalCartItems
     )
     const completePayment = () => {
-      makePayment()
+
       $('#payment-modal').modal('hide');
       router.push("/order-received")
 
@@ -1830,11 +1830,10 @@ export default defineComponent({
     const iframe_url = ref("")
     const makePayment = () => {
       // formData.Amount = subtotal.value
-      formData.Amount = 1
+      formData.Amount = subtotal.value
       formData.Remarks = "cart items"
       formData.TransactionDesc = "asdf"
       formData.reference = "cart items"
-
       const base64 = btoa(JSON.stringify(formData));
       console.log("base64");
       console.log("base64", base64);
@@ -1842,7 +1841,7 @@ export default defineComponent({
       console.log("Remarks : ", formData.Remarks)
       console.log("TransactionDesc : ", formData.TransactionDesc)
       console.log("AccountReference : ", formData.reference)
-      iframe_url.value = "https://swypepay.io/terra/iframe/" + base64;
+      iframe_url.value = "https://swypepay.io/terra/#/iframe/" + base64;
     }
     const billingformData = reactive( {
       firstname : '',
@@ -1860,12 +1859,13 @@ export default defineComponent({
       // cash("#payment-modal").modal("hide");
     }
     const showPaymentModal = () => {
+      makePayment()
       console.log(billingformData)
-      // axios.post('http://localhost:5000/halfprice', billingformData, {headers: {'Content-Type': 'application/json'}}).then(
-      //     response => {
-      //       console.log(response.data)
-      //     }
-      // )
+      axios.post('http://127.0.0.1:5000/halfprice', billingformData, { headers: {'Content-Type': 'application/json'} }).then(
+          response => {
+            console.log(response.data)
+          }
+      )
 
       $('#payment-modal').modal('show');
 
