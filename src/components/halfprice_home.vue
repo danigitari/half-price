@@ -568,7 +568,7 @@ Remember me
                               </div>
                               <ul class="">
                                 <li>
-                                  <a href="../shop/v1.html">Shop List v1</a>
+                                  <a >Shop List v1</a>
                                 </li>
                                 <li>
                                   <a href="../shop/v2.html">Shop List v2</a>
@@ -1010,7 +1010,7 @@ Remember me
                     <span class="hero__title-line-1 font-weight-regular d-block">Featured Books of the</span>
                     <span class="hero__title-line-2 font-weight-bold d-block">February</span>
                   </h2>
-                  <a href="../shop/v1.html" class="btn btn-dark btn-wide rounded-0 hero__btn"
+                  <a  class="btn btn-dark btn-wide rounded-0 hero__btn"
                      data-scs-animation-in="fadeInLeft" data-scs-animation-delay="400">See More</a>
                 </div>
               </div>
@@ -1030,7 +1030,7 @@ Remember me
                     <span class="hero__title-line-1 font-weight-regular d-block">Featured Books of the</span>
                     <span class="hero__title-line-2 font-weight-bold d-block">February</span>
                   </h2>
-                  <a href="../shop/v1.html" class="btn btn-dark btn-wide rounded-0 hero__btn"
+                  <a  class="btn btn-dark btn-wide rounded-0 hero__btn"
                      data-scs-animation-in="fadeInLeft" data-scs-animation-delay="400">See More</a>
                 </div>
               </div>
@@ -1050,7 +1050,7 @@ Remember me
                     <span class="hero__title-line-1 font-weight-regular d-block">Featured Books of the</span>
                     <span class="hero__title-line-2 font-weight-bold d-block">February</span>
                   </h2>
-                  <a href="../shop/v1.html" class="btn btn-dark btn-wide rounded-0 hero__btn"
+                  <a  class="btn btn-dark btn-wide rounded-0 hero__btn"
                      data-scs-animation-in="fadeInLeft" data-scs-animation-delay="400">See More</a>
                 </div>
               </div>
@@ -1070,7 +1070,7 @@ Remember me
                     <span class="hero__title-line-1 font-weight-regular d-block">Featured Books of the</span>
                     <span class="hero__title-line-2 font-weight-bold d-block">February</span>
                   </h2>
-                  <a href="../shop/v1.html" class="btn btn-dark btn-wide rounded-0 hero__btn"
+                  <a  class="btn btn-dark btn-wide rounded-0 hero__btn"
                      data-scs-animation-in="fadeInLeft" data-scs-animation-delay="400">See More</a>
                 </div>
               </div>
@@ -1108,7 +1108,7 @@ Remember me
     <div class="container">
 <!--      <header class="mb-5 d-md-flex justify-content-between align-items-center">-->
 <!--        <h2 class="font-size-7 mb-3 mb-md-0">Bestselling Books</h2>-->
-<!--        <a href="../shop/v1.html" class="h-primary d-block">View All <i class="glyph-icon flaticon-next"></i></a>-->
+<!--        <a  class="h-primary d-block">View All <i class="glyph-icon flaticon-next"></i></a>-->
 <!--      </header>-->
 <!--      <div class="js-slick-carousel products no-gutters border-top border-left border-right"-->
 <!--           data-pagi-classes="d-xl-none text-center position-absolute right-0 left-0 u-slick__pagination mt-4 mb-0"-->
