@@ -938,8 +938,7 @@ Remember me
 
 
 
-  <main id="content">
-    <div class="bg-gray-200 space-bottom-3">
+  <main id="content"><div class="bg-gray-200 space-bottom-3">
       <div class="container">
         <div class="py-5 py-lg-7">
           <h6 class="font-weight-medium font-size-7 text-center mt-lg-1">Order Received</h6>
@@ -1013,30 +1012,6 @@ Remember me
             </div>
             <div class="px-3 pl-md-5 pr-md-4 mb-6 pb-xl-1">
               <div class="row row-cols-1 row-cols-md-2">
-                <div class="col">
-                  <div class="mb-6 mb-md-0">
-                    <h6 class="font-weight-medium font-size-22 mb-3">Billing Address
-                    </h6>
-                    <address class="d-flex flex-column mb-0">
-                      <span class="text-gray-600 font-size-2">Ali Tufan</span>
-                      <span class="text-gray-600 font-size-2">Bedford St,</span>
-                      <span class="text-gray-600 font-size-2">Covent Garden, </span>
-                      <span class="text-gray-600 font-size-2">London WC2E 9ED</span>
-                      <span class="text-gray-600 font-size-2">United Kingdom</span>
-                    </address>
-                  </div>
-                </div>
-                <div class="col">
-                  <h6 class="font-weight-medium font-size-22 mb-3">Shipping Address
-                  </h6>
-                  <address class="d-flex flex-column mb-0">
-                    <span class="text-gray-600 font-size-2">Ali Tufan</span>
-                    <span class="text-gray-600 font-size-2">Bedford St,</span>
-                    <span class="text-gray-600 font-size-2">Covent Garden, </span>
-                    <span class="text-gray-600 font-size-2">London WC2E 9ED</span>
-                    <span class="text-gray-600 font-size-2">United Kingdom</span>
-                  </address>
-                </div>
               </div>
             </div>
           </div>
