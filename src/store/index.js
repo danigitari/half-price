@@ -35,6 +35,9 @@ const store = createStore({
         REMOVE_FROM_CART(state, book) {
             state.cart.splice(book)
         },
+        CLEAR_CART(state){
+            state.cart = []
+        }
 
     },
     actions: {

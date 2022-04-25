@@ -1795,7 +1795,7 @@
   </body>
 </template>
 <script>
-import {defineComponent, computed, ref, reactive} from "vue";
+import {defineComponent, computed, ref, reactive , onMounted } from "vue";
 import {useStore} from "vuex";
 import {useRouter} from "vue-router";
 import axios from "axios";
@@ -1862,7 +1862,7 @@ export default defineComponent({
     const showPaymentModal = () => {
       makePayment()
       console.log(billingformData)
-        axios.post('http://127.0.0.1:5000/halfprice', billingformData, { headers: {'Content-Type': 'application/json'} }).then(
+        axios.post('http://http://guarded-stream-16037.herokuapp.com/halfprice', billingformData, { headers: {'Content-Type': 'application/json'} }).then(
           response => {
             console.log(response.data)
           }
@@ -1879,6 +1879,17 @@ export default defineComponent({
           }
       )
     }
+    onMounted( ()=> {
+      if (localStorage.getItem('reloaded')) {
+        // The page was just reloaded. Clear the value from local storage
+        // so that it will reload the next time this page is visited.
+        localStorage.removeItem('reloaded');
+      } else {
+        // Set a flag so that we know not to reload the page twice.
+        localStorage.setItem('reloaded', '1');
+        location.reload();
+      }
+    })
 
     return {
       store,

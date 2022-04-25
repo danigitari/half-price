@@ -1057,7 +1057,7 @@ Remember me
 
               <div class="entry-content">
                 <div class="woocommerce">
-                  <form class="woocommerce-cart-form table-responsive" action="cart.html#" method="post">
+                  <form class="woocommerce-cart-form table-responsive">
                     <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents">
                       <thead>
                       <tr>
@@ -1134,7 +1134,7 @@ Remember me
                       <tr>
                         <td colspan="5" class="actions">
 
-                          <input type="submit" class="button" name="update_cart" value="Update cart">
+                          <button @click="clearCart"  value="Clear cart" > Clear Cart</button>
                           <input type="hidden" id="_wpnonce" name="_wpnonce" value="db025d7a70"><input type="hidden"
                                                                                                        name="_wp_http_referer"
                                                                                                        value="/storefront/cart/">
@@ -1499,7 +1499,7 @@ Remember me
 
 <script>
 import {useStore} from "vuex";
-import {defineComponent, computed, reactive, ref} from "vue";
+import {defineComponent, computed, reactive, ref, onMounted} from "vue";
 import {useRouter} from "vue-router";
 
 
@@ -1547,6 +1547,9 @@ export default defineComponent({
     const total_cart_items = computed(() =>
         store.getters.getTotalCartItems
     )
+    const clearCart = () => {
+      store.commit('CLEAR_CART')
+    }
     const subtotal = computed(() =>
         store.getters.getTotalCost)
     const closeModal = () => {
@@ -1589,6 +1592,17 @@ export default defineComponent({
       store.commit('ADD_TO_CART', book)
 
     }
+    onMounted( ()=> {
+      if (localStorage.getItem('reloaded')) {
+        // The page was just reloaded. Clear the value from local storage
+        // so that it will reload the next time this page is visited.
+        localStorage.removeItem('reloaded');
+      } else {
+        // Set a flag so that we know not to reload the page twice.
+        localStorage.setItem('reloaded', '1');
+        location.reload();
+      }
+    })
     return {
       store,
       router,
@@ -1607,7 +1621,8 @@ export default defineComponent({
       goToContact,
       goToCheckout,
       increaseBookQuantity,
-      decreaseBookQuantity
+      decreaseBookQuantity,
+      clearCart,
 
     }
   }
