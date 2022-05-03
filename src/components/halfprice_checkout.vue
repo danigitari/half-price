@@ -38,8 +38,87 @@
       </div>
     </div>
   </div>
-  <body class="right-sidebar woocommerce-checkout">
+  <div id="error-modal" class="modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="mr-auto" style="font-size: 20px;"></h2>
+        </div>
+        <div class="modal-body ">
+          <div class=" " style="font-size: 15px">
+            please fill in all the required fields in billing details
+          </div>
+        </div>
+        <div class="modal-footer text-right">
+          <button
+              type="button"
+              class="btn w-48"
+              @click="closeErrorModal"
+          >
+            Cancel
+          </button>
 
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div id="confirmation-modal" class="modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="mr-auto" style="font-size: 20px;"></h2>
+        </div>
+        <div class="modal-body ">
+          <div style="font-size: 15px">
+          Please enter payment message reference code </div>
+          <div class=" " style="font-size: 15px">
+            <input type="text" class="input-text form-control" v-model="referral_code" />
+
+          </div>
+        </div>
+        <div class="modal-footer text-right">
+          <button
+              type="button"
+              class="btn w-48"
+              @click="confirmReferralCode"
+          >
+            Send
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div id="notfound-modal" class="modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="mr-auto" style="font-size: 20px;"> Error </h2>
+        </div>
+        <div class="modal-body ">
+
+          <div class=" " style="font-size: 15px">
+            <p> payment not found </p>
+
+          </div>
+        </div>
+        <div class="modal-footer text-right">
+          <button
+              type="button"
+              class="btn w-48"
+              @click="closeNotFound"
+          >
+            Cancel
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <body class="right-sidebar woocommerce-checkout">
   <header id="site-header" class="site-header__v1">
     <div class="topbar border-bottom d-none d-md-block">
       <div class="container-fluid px-2 px-md-5 px-xl-8d75">
@@ -407,7 +486,7 @@
               <div class="px-4 py-5 px-md-6 border-bottom" v-for="book in books" :key="book.id">
                 <div class="media">
                   <a href="#" class="d-block"><img src="https://placehold.it/100x153" class="img-fluid"
-                                                             alt="image-description"></a>
+                                                   alt="image-description"></a>
                   <div class="media-body ml-4d875">
                     <div class="text-primary text-uppercase font-size-1 mb-1 text-truncate"><a href="#">Hard
                       Cover</a></div>
@@ -1070,7 +1149,7 @@
                 <div name="checkout" class="checkout woocommerce-checkout row mt-8" enctype="multipart/form-data"
                      novalidate="novalidate">
                   <div class="col2-set col-md-6 col-lg-7 col-xl-8 mb-6 mb-md-0" id="customer_details">
-                    <div class="px-4 pt-5 bg-white border">
+                    <Form class="px-4 pt-5 bg-white border" v-slot="{ errors }">
                       <div class="woocommerce-billing-fields">
                         <h3 class="mb-4 font-size-3">Billing details</h3>
                         <div class="woocommerce-billing-fields__field-wrapper row">
@@ -1078,17 +1157,17 @@
                              id="billing_first_name_field" data-priority="10">
                             <label for="billing_first_name" class="form-label">First name <abbr class="required"
                                                                                                 title="required">*</abbr></label>
-                            <input v-model="billingformData.firstname" type="text" class="input-text form-control"
-                                   name="billing_first_name" id="billing_first_name" placeholder=""
-                                   autocomplete="given-name" autofocus="autofocus">
+                            <Field v-model="billingformData.firstname" type="text" class="input-text form-control"
+                                   name="field" :rules="isRequired" id="billing_first_name" placeholder=""
+                                   autocomplete="given-name" autofocus="autofocus"/>
                           </p>
                           <p class="col-lg-6 mb-4d75 form-row form-row-last validate-required"
                              id="billing_last_name_field" data-priority="20">
                             <label for="billing_last_name" class="form-label">Last name <abbr class="required"
                                                                                               title="required">*</abbr></label>
-                            <input v-model="billingformData.lastname" type="text" class="input-text form-control"
-                                   name="billing_last_name" id="billing_last_name" placeholder=""
-                                   autocomplete="family-name">
+                            <Field v-model="billingformData.lastname" type="text" class="input-text form-control"
+                                   name="field" :rules="isRequired" id="billing_last_name" placeholder=""
+                                   autocomplete="family-name"/>
                           </p>
                           <p class="col-12 mb-4d75 form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated"
                              id="billing_country_field" data-priority="40">
@@ -1370,7 +1449,8 @@
                              id="billing_state_field" data-priority="80"
                              data-o_class="form-row form-row-wide address-field validate-state">
                             <label for="billing_state" class="form-label">County</label>
-                            <input v-model="billingformData.county" type="text" class="input-text form-control" placeholder=""
+                            <input v-model="billingformData.county" type="text" class="input-text form-control"
+                                   placeholder=""
                                    name="billing_state" id="billing_state" autocomplete="address-level1">
                           </p>
 
@@ -1389,7 +1469,7 @@
                           </p>
                         </div>
                       </div>
-                    </div>
+                    </Form>
 
                   </div>
                   <h3 id="order_review_heading" class="d-none">Your order</h3>
@@ -1795,15 +1875,38 @@
   </body>
 </template>
 <script>
-import {defineComponent, computed, ref, reactive , onMounted } from "vue";
+import {defineComponent, computed, ref, reactive, onMounted} from "vue";
 import {useStore} from "vuex";
 import {useRouter} from "vue-router";
 import axios from "axios";
+import {Field, Form} from 'vee-validate';
 
 export default defineComponent({
+  components: {
+    Field,
+    Form,
+  },
   setup() {
+
     const store = useStore()
+    const referral_code = ref()
+    const confirmReferralCode = () => {
+      let reference = referral_code.value
+     axios.post('http://guarded-stream-16037.herokuapp.com/referenceCode' , reference , { headers: {'Content-Type': 'application/json'}}).then(response => {
+       if (response.data == 'payment not found'){
+         $('#notfound-modal').modal('show');
+       }
+       if (response.data == 'success'){
+        router.push('/order-received')
+       }
+     })
+      $('#confirmation-modal').modal('hide');
+    }
     const router = useRouter()
+    const isRequired = (value) => {
+      return value ? true : 'This field is required';
+
+    }
 
     const books = computed(() =>
         store.getters.getCartItems)
@@ -1815,11 +1918,13 @@ export default defineComponent({
         store.getters.getTotalCartItems
     )
     const completePayment = () => {
-
       $('#payment-modal').modal('hide');
-      router.push("/order-received")
+      $('#confirmation-modal').modal('show');
+
+      // router.push("/order-received")
 
     }
+
     const formData = reactive({
 
       Amount: 0,
@@ -1843,32 +1948,40 @@ export default defineComponent({
       console.log("AccountReference : ", formData.reference)
       iframe_url.value = "https://swypepay.io/terra/#/iframe/" + base64;
     }
-    const billingformData = reactive( {
-      firstname : '',
-      lastname : '',
-      country : '',
-      street : '',
-      email : '',
+    const billingformData = reactive({
+      firstname: '',
+      lastname: '',
+      country: '',
+      street: '',
+      email: '',
       phone: '',
-      town : '',
-      subtotal: 1
+      town: '',
+      subtotal: subtotal
     })
     const closeModal = () => {
-
       $('#payment-modal').modal('hide');
-
       // cash("#payment-modal").modal("hide");
+    }
+   const closeErrorModal = () => {
+      $('#error-modal').modal('hide');
+    }
+    const closeNotFound = () => {
+      $('#notfound-modal').modal('hide');
     }
     const showPaymentModal = () => {
       makePayment()
       console.log(billingformData)
-        axios.post('http://http://guarded-stream-16037.herokuapp.com/halfprice', billingformData, { headers: {'Content-Type': 'application/json'} }).then(
+      axios.post('http://guarded-stream-16037.herokuapp.com/halfprice', billingformData, {headers: {'Content-Type': 'application/json'}}).then(
           response => {
             console.log(response.data)
           }
       )
+      if (billingformData.subtotal || billingformData.lastname || billingformData.firstname || billingformData.town || billingformData.street || billingformData.phone || billingformData.email || billingformData.country) {
+        $('#payment-modal').modal('show');
+      } else {
+        $('#error-modal').modal('show')
+      }
 
-      $('#payment-modal').modal('show');
 
       // cash("#payment-modal").modal("hide");
     }
@@ -1879,7 +1992,7 @@ export default defineComponent({
           }
       )
     }
-    onMounted( ()=> {
+    onMounted(() => {
       if (localStorage.getItem('reloaded')) {
         // The page was just reloaded. Clear the value from local storage
         // so that it will reload the next time this page is visited.
@@ -1905,6 +2018,11 @@ export default defineComponent({
       showPaymentModal,
       checkoutDetails,
       billingformData,
+      referral_code,
+      isRequired,
+      confirmReferralCode,
+      closeErrorModal,
+      closeNotFound,
 
     }
   }

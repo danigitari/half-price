@@ -242,7 +242,7 @@ Remember me
                       </div>
 
                       <a class="js-animation-link text-dark font-size-2 t-d-u link-muted font-weight-medium"
-                         href="javascript:;" data-target="#forgotPassword" data-link-group="idForm"
+                         href="javascript:  ;" data-target="#forgotPassword" data-link-group="idForm"
                          data-animation-in="fadeIn">Forgot Password?</a>
                     </div>
                     <div class="mb-4d75">
@@ -1010,7 +1010,7 @@ Remember me
                     <span class="hero__title-line-1 font-weight-regular d-block">Featured Books of the</span>
                     <span class="hero__title-line-2 font-weight-bold d-block">February</span>
                   </h2>
-                  <a  class="btn btn-dark btn-wide rounded-0 hero__btn"
+                  <a href="" class="btn btn-dark btn-wide rounded-0 hero__btn"
                      data-scs-animation-in="fadeInLeft" data-scs-animation-delay="400">See More</a>
                 </div>
               </div>

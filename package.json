@@ -16,6 +16,7 @@
     "jquery": "^3.6.0",
     "serve-static": "^1.15.0",
     "toastify-js": "^1.11.2",
+    "vee-validate": "^4.5.11",
     "vue": "^3.2.13",
     "vue-router": "^4.0.13",
     "vuex": "^4.0.2",

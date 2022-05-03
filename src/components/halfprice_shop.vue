@@ -52,7 +52,7 @@
           <div class="site-navigation mr-auto d-none d-xl-block">
             <ul class="nav">
 
-              <li @click="goToHome" class="nav-item active">
+                <li @click="goToHome" class="nav-item active">
                 <a class="nav-link link-black-100 mx-4 px-0 py-5 active font-weight-medium d-flex align-items-center border-bottom border-primary border-width-2">
                   Home
                 </a>
@@ -1269,7 +1269,7 @@ Remember me
               <div id="widgetCollapseOne" class="mt-3 widget-content collapse show" aria-labelledby="widgetHeadingOne" data-parent="#widgetAccordion">
                 <ul class="product-categories">
                   <li class="cat-item cat-item-9 cat-parent" v-for="category in categories" :key="category" >
-                    <a > {{ c}}</a>
+                    <a > {{ category }}</a>
 
                   </li>
 

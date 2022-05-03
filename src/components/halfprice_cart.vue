@@ -1134,7 +1134,7 @@ Remember me
                       <tr>
                         <td colspan="5" class="actions">
 
-                          <button @click="clearCart"  value="Clear cart" > Clear Cart</button>
+                          <button @click="clearCart"  value="Clear cart" > Clear <C></C>art</button>
                           <input type="hidden" id="_wpnonce" name="_wpnonce" value="db025d7a70"><input type="hidden"
                                                                                                        name="_wp_http_referer"
                                                                                                        value="/storefront/cart/">
