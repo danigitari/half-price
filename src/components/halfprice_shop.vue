@@ -51,42 +51,25 @@
           </div>
           <div class="site-navigation mr-auto d-none d-xl-block">
             <ul class="nav">
-
-                <li @click="goToHome" class="nav-item active">
-                <a class="nav-link link-black-100 mx-4 px-0 py-5 active font-weight-medium d-flex align-items-center border-bottom border-primary border-width-2">
+              <li class="nav-item active">
+                <a @click="goToHome" class="nav-link link-black-100 mx-4 px-0 py-5 active font-weight-medium d-flex align-items-center ">
                   Home
                 </a>
 
               </li>
-
               <!--<li class="nav-item"><a href="categories.html" class="nav-link link-black-100 mx-4 px-0 py-5 font-weight-medium">Categories</a></li>-->
-
               <li class="nav-item dropdown">
-
-                <a id="shopDropdownInvoker" @click="goToShop"
-                   class="dropdown-toggle nav-link link-black-100 mx-4 px-0 py-5 font-weight-medium d-flex align-items-center"
-                   aria-haspopup="true" aria-expanded="false" data-unfold-event="hover"
-                   data-unfold-target="#shopDropdownMenu" data-unfold-type="css-animation" data-unfold-duration="200"
-                   data-unfold-delay="50" data-unfold-hide-on-scroll="true" data-unfold-animation-in="slideInUp"
-                   data-unfold-animation-out="fadeOut">
+                <a id="shopDropdownInvoker"  class="dropdown-toggle nav-link link-black-100 mx-4 px-0 py-5 font-weight-medium d-flex align-items-center border-bottom border-primary border-width-2" aria-haspopup="true" aria-expanded="false" data-unfold-event="hover" data-unfold-target="#shopDropdownMenu" data-unfold-type="css-animation" data-unfold-duration="200" data-unfold-delay="50" data-unfold-hide-on-scroll="true" data-unfold-animation-in="slideInUp" data-unfold-animation-out="fadeOut">
                   Shop
                 </a>
-
-                <ul id="shopDropdownMenu" class="dropdown-unfold dropdown-menu font-size-2 rounded-0 border-gray-900"
-                >
-                  <li><a  @click="goToCart" class="dropdown-item link-black-100">Shop cart</a></li>
+                <ul id="shopDropdownMenu" class="dropdown-unfold dropdown-menu font-size-2 rounded-0 border-gray-900" aria-labelledby="shopDropdownInvoker">
+                  <li><a @click="goToCart" class="dropdown-item link-black-100">Shop cart</a></li>
 
                 </ul>
               </li>
+              <li class="nav-item"><a @click="goToAbout" class="nav-link link-black-100 mx-4 px-0 py-5 font-weight-medium">About Us</a></li>
 
-
-              <li class="nav-item"><a @click="goToAbout" class="nav-link link-black-100 mx-4 px-0 py-5 font-weight-medium">About Us</a>
-              </li>
-
-
-              <li class="nav-item"><a @click="goToContact" class="nav-link link-black-100 mx-4 px-0 py-5 font-weight-medium">Contact Us</a>
-              </li>
-
+              <li class="nav-item"><a @click="goToContact" class="nav-link link-black-100 mx-4 px-0 py-5 font-weight-medium">Contact Us</a></li>
             </ul>
           </div>
           <ul class="d-md-none nav mr-md-n3 ml-auto">
@@ -287,75 +270,69 @@ Remember me
             </button>
           </div>
 
-
           <div class="u-sidebar__body">
             <div class="u-sidebar__content u-header-sidebar__content">
 
               <header class="border-bottom px-4 px-md-6 py-4">
-                <h2 class="font-size-3 mb-0 d-flex align-items-center"><i class="flaticon-icon-126515 mr-3 font-size-5"></i>Your shopping bag ({{books_in_cart}})</h2>
+                <h2 class="font-size-3 mb-0 d-flex align-items-center"><i
+                    class="flaticon-icon-126515 mr-3 font-size-5"></i>Your shopping bag ({{ books_in_cart }})</h2>
               </header>
 
-              <div class="px-4 py-5 px-md-6 border-bottom">
+
+              <div class="px-4 py-5 px-md-6 border-bottom" v-for="book in books" :key="book.id">
                 <div class="media">
-                  <a href="#" class="d-block"><img src="https://placehold.it/100x153" class="img-fluid" alt="image-description"></a>
-                  <div class="media-body ml-4d875">
-                    <div class="text-primary text-uppercase font-size-1 mb-1 text-truncate"><a href="#">Hard Cover</a></div>
-                    <h2 class="woocommerce-loop-product__title h6 text-lh-md mb-1 text-height-2 crop-text-2">
-                      <a href="#" class="text-dark">The Ride of a Lifetime: Lessons Learned from 15 Years as CEO</a>
+                  <a href="" class="d-block"><img :src=book.image class="img-fluid" width="120" height="183"
+                                                  alt="image-description"></a>
+
+
+                  <!--                  <div class="media-body ml-4d875">-->
+                  <!--                    <div class="text-primary text-uppercase font-size-1 mb-1 text-truncate"><a href="">Hard-->
+                  <!--                      Cover</a></div>-->
+
+                  <!--                    <h2 class="woocommerce-loop-product__title h6 text-lh-md mb-1 text-height-2 crop-text-2">-->
+                  <!--                      <a href="" class="text-dark">{{-->
+                  <!--                          book.title-->
+                  <!--                        }}</a>-->
+                  <!--                    </h2>-->
+                  <!--                    <div class="font-size-2 mb-1 text-truncate"><a href="" class="text-gray-700">-->
+                  <!--                      {{ book.author }}</a></div>-->
+                  <!--                    <div class="price d-flex align-items-center font-weight-medium font-size-3">-->
+                  <!--                      <span class="woocommerce-Price-amount amount">{{ book.quantity }} x <span-->
+                  <!--                          class="woocommerce-Price-currencySymbol">$</span>{{ book.price }}</span>-->
+                  <!--                    </div>-->
+                  <!--                  </div>-->
+                  <div class="media-body ml-3 woocommerce-mini-cart-item__content">
+                    <div class="text-primary text-uppercase font-size-1 mb-1 text-truncate">
+                      <a href="">{{ book.category }}</a></div>
+                    <h2 class="woocommerce-loop-product__title h6 ">
+                      <p href="">
+                        {{ book.name }} </p>
                     </h2>
-                    <div class="font-size-2 mb-1 text-truncate"><a href="#" class="text-gray-700">Robert Iger</a></div>
-                    <div class="price d-flex align-items-center font-weight-medium font-size-3">
-                      <span class="woocommerce-Price-amount amount">1 x <span class="woocommerce-Price-currencySymbol">$</span>125.30</span>
-                    </div>
+                    <div class="font-size-2 mb-1 text-truncate"><a href="" class="text-gray-700">
+                      {{ book.author }}</a></div>
+                    <span class="woocommerce-Price-amount amount">
+                                    {{ book.quantity }} ×
+                    <span class="woocommerce-Price-amount amount">
+                    <span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;{{ book.price }}</span>
+                  </span>
                   </div>
+
+
+
                   <div class="mt-3 ml-3">
-                    <a href="#" class="text-dark"><i class="fas fa-times"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="px-4 py-5 px-md-6 border-bottom">
-                <div class="media">
-                  <a href="#" class="d-block"><img src="https://placehold.it/100x153" class="img-fluid" alt="image-description"></a>
-                  <div class="media-body ml-4d875">
-                    <div class="text-primary text-uppercase font-size-1 mb-1 text-truncate"><a href="#">Hard Cover</a></div>
-                    <h2 class="woocommerce-loop-product__title h6 text-lh-md mb-1 text-height-2 crop-text-2">
-                      <a href="#" class="text-dark">The Rural Diaries: Love, Livestock, and Big Life Lessons Down</a>
-                    </h2>
-                    <div class="font-size-2 mb-1 text-truncate"><a href="#" class="text-gray-700">Hillary Burton</a></div>
-                    <div class="price d-flex align-items-center font-weight-medium font-size-3">
-                      <span class="woocommerce-Price-amount amount">2 x <span class="woocommerce-Price-currencySymbol">$</span>200</span>
-                    </div>
-                  </div>
-                  <div class="mt-3 ml-3">
-                    <a href="#" class="text-dark"><i class="fas fa-times"></i></a>
-                  </div>
-                </div>
-              </div>
-              <div class="px-4 py-5 px-md-6 border-bottom">
-                <div class="media">
-                  <a href="#" class="d-block"><img src="https://placehold.it/100x153" class="img-fluid" alt="image-description"></a>
-                  <div class="media-body ml-4d875">
-                    <div class="text-primary text-uppercase font-size-1 mb-1 text-truncate"><a href="#">Paperback</a></div>
-                    <h2 class="woocommerce-loop-product__title h6 text-lh-md mb-1 text-height-2 crop-text-2">
-                      <a href="#" class="text-dark">Russians Among Us: Sleeper Cells, Ghost Stories, and the Hunt.</a>
-                    </h2>
-                    <div class="font-size-2 mb-1 text-truncate"><a href="#" class="text-gray-700">Gordon Corera</a></div>
-                    <div class="price d-flex align-items-center font-weight-medium font-size-3">
-                      <span class="woocommerce-Price-amount amount">6 x <span class="woocommerce-Price-currencySymbol">$</span>100</span>
-                    </div>
-                  </div>
-                  <div class="mt-3 ml-3">
-                    <a href="#" class="text-dark"><i class="fas fa-times"></i></a>
+                    <a href="" class="text-dark"><i @click="removeProductFromCart(book)" class="fas fa-times"></i></a>
                   </div>
                 </div>
               </div>
               <div class="px-4 py-5 px-md-6 d-flex justify-content-between align-items-center font-size-3">
                 <h4 class="mb-0 font-size-3">Subtotal:</h4>
-                <div class="font-weight-medium">$750.00</div>
+                <div class="font-weight-medium"> {{ subtotal }}</div>
               </div>
               <div class="px-4 mb-8 px-md-6">
-                <button type="submit" class="btn btn-block py-4 rounded-0 btn-outline-dark mb-4">View Cart</button>
-                <button type="submit" class="btn btn-block py-4 rounded-0 btn-dark">Checkout</button>
+                <!--                <button type="submit" class="btn btn-block py-4 rounded-0 btn-outline-dark mb-4">View Cart</button>-->
+                <button type="submit" class="btn btn-block py-4 rounded-0 btn-dark"
+                        @click="router.push({ name: 'halfprice_cart', params: { books_in_cart,books} })">Checkout
+                </button>
               </div>
             </div>
           </div>
@@ -940,14 +917,10 @@ Remember me
   <div class="page-header border-bottom mb-8">
     <div class="container">
       <div class="d-md-flex justify-content-between align-items-center py-4">
-        <h1 class="page-title font-size-3 font-weight-medium m-0 text-lh-lg">Shop</h1>
         <nav class="woocommerce-breadcrumb font-size-2">
-          <a href="../home/" class="h-primary">Home</a>
+          <a href="/" class="h-primary">Home</a>
           <span class="breadcrumb-separator mx-1"><i class="fas fa-angle-right"></i></span>
-          <a href="v3.html" class="h-primary">Electronics</a>
-          <span class="breadcrumb-separator mx-1"><i class="fas fa-angle-right"></i></span>
-          <a href="v3.html" class="h-primary">Cameras</a>
-          <span class="breadcrumb-separator mx-1"><i class="fas fa-angle-right"></i></span>Build Your DSLR
+          <a href="" class="h-primary">Shop</a>
         </nav>
       </div>
     </div>
@@ -1018,7 +991,7 @@ Remember me
           <div class="tab-content" id="pills-tabContent">
             <div class="tab-pane fade show active" id="pills-one-example1" role="tabpanel" aria-labelledby="pills-one-example1-tab">
 
-              <ul class="products list-unstyled row no-gutters row-cols-2 row-cols-lg-3 row-cols-wd-4 border-top border-left mb-6">
+              <ul class="products list-unstyled row no-gutters row-cols-2 row-cols-lg-4 row-cols-wd-4 border-top border-left mb-6">
                 <li class="product col" v-for="product in products" :key="product.id">
                   <div class="product__inner overflow-hidden p-3 p-md-4d875">
                     <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">
@@ -1269,118 +1242,14 @@ Remember me
               <div id="widgetCollapseOne" class="mt-3 widget-content collapse show" aria-labelledby="widgetHeadingOne" data-parent="#widgetAccordion">
                 <ul class="product-categories">
                   <li class="cat-item cat-item-9 cat-parent" v-for="category in categories" :key="category" >
-                    <a > {{ category }}</a>
+                    <a > {{ category.name }}</a>
 
                   </li>
 
                 </ul>
               </div>
             </div>
-            <div id="Authors" class="widget widget_search widget_author p-4d875 border">
-              <div id="widgetHeading21" class="widget-head">
-                <a class="d-flex align-items-center justify-content-between text-dark"  data-toggle="collapse" data-target="#widgetCollapse21" aria-expanded="true" aria-controls="widgetCollapse21">
-                  <h3 class="widget-title mb-0 font-weight-medium font-size-3">Author</h3>
-                  <svg class="mins" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="2px">
-                    <path fill-rule="evenodd" fill="rgb(22, 22, 25)" d="M0.000,-0.000 L15.000,-0.000 L15.000,2.000 L0.000,2.000 L0.000,-0.000 Z" />
-                  </svg>
-                  <svg class="plus" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px">
-                    <path fill-rule="evenodd" fill="rgb(22, 22, 25)" d="M15.000,8.000 L9.000,8.000 L9.000,15.000 L7.000,15.000 L7.000,8.000 L0.000,8.000 L0.000,6.000 L7.000,6.000 L7.000,-0.000 L9.000,-0.000 L9.000,6.000 L15.000,6.000 L15.000,8.000 Z" />
-                  </svg>
-                </a>
-              </div>
-              <div id="widgetCollapse21" class="mt-4 widget-content collapse show" aria-labelledby="widgetHeading21" data-parent="#widgetAccordion">
-                <form class="form-inline my-2 overflow-hidden">
-                  <div class="input-group flex-nowrap w-100">
-                    <div class="input-group-prepend">
-                      <i class="glph-icon flaticon-loupe py-2d75 bg-white-100 border-white-100 text-dark pl-3 pr-0 rounded-0"></i>
-                    </div>
-                    <input class="form-control bg-white-100 py-2d75 height-4 border-white-100 rounded-0" type="search" placeholder="Search" aria-label="Search">
-                  </div>
-                  <button class="btn btn-outline-success my-2 my-sm-0 sr-only" type="submit">Search</button>
-                </form>
-                <ul class="product-categories">
-                  <li class="cat-item cat-item-9 cat-parent">
-                    <a href="../others/authors-single.html">A. J. Finn</a>
-                  </li>
-                  <li class="cat-item cat-item-69 cat-parent">
-                    <a href="../others/authors-single.html">Anne Frank</a>
-                  </li>
-                  <li class="cat-item cat-item-65 cat-parent">
-                    <a href="../others/authors-single.html">Camille Pagán</a>
-                  </li>
-                  <li class="cat-item cat-item-11 cat-parent"><a href="../others/authors-single.html">Daniel H. Pink</a>
-                  </li>
-                  <li class="cat-item cat-item-12"><a href="../others/authors-single.html">Danielle Steel</a></li>
-                  <li class="cat-item cat-item-31"><a href="../others/authors-single.html">David Quammen</a></li>
-                </ul>
-              </div>
-            </div>
-            <div id="Language" class="widget p-4d875 border">
-              <div id="widgetHeading22" class="widget-head">
-                <a class="d-flex align-items-center justify-content-between text-dark"  data-toggle="collapse" data-target="#widgetCollapse22" aria-expanded="true" aria-controls="widgetCollapse22">
-                  <h3 class="widget-title mb-0 font-weight-medium font-size-3">Language</h3>
-                  <svg class="mins" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="2px">
-                    <path fill-rule="evenodd" fill="rgb(22, 22, 25)" d="M0.000,-0.000 L15.000,-0.000 L15.000,2.000 L0.000,2.000 L0.000,-0.000 Z" />
-                  </svg>
-                  <svg class="plus" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px">
-                    <path fill-rule="evenodd" fill="rgb(22, 22, 25)" d="M15.000,8.000 L9.000,8.000 L9.000,15.000 L7.000,15.000 L7.000,8.000 L0.000,8.000 L0.000,6.000 L7.000,6.000 L7.000,-0.000 L9.000,-0.000 L9.000,6.000 L15.000,6.000 L15.000,8.000 Z" />
-                  </svg>
-                </a>
-              </div>
-              <div id="widgetCollapse22" class="mt-4 widget-content collapse show" aria-labelledby="widgetHeading22" data-parent="#widgetAccordion">
-                <ul class="product-categories">
-                  <li class="custom-control custom-checkbox mb-2 pb-2">
-                    <input type="checkbox" class="custom-control-input" id="brandEnglish">
-                    <label class="custom-control-label" for="brandEnglish">English</label>
-                  </li>
-                  <li class="custom-control custom-checkbox mb-2 pb-2">
-                    <input type="checkbox" class="custom-control-input" id="brandGerman">
-                    <label class="custom-control-label" for="brandGerman">German</label>
-                  </li>
-                  <li class="custom-control custom-checkbox mb-2 pb-2">
-                    <input type="checkbox" class="custom-control-input" id="brandFrench">
-                    <label class="custom-control-label" for="brandFrench">French</label>
-                  </li>
-                  <li class="custom-control custom-checkbox mb-2 pb-2">
-                    <input type="checkbox" class="custom-control-input" id="brandSpanish">
-                    <label class="custom-control-label" for="brandSpanish">Spanish</label>
-                  </li>
-                  <li class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="brandTurkish">
-                    <label class="custom-control-label" for="brandTurkish">Turkish</label>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div id="Format" class="widget p-4d875 border">
-              <div id="widgetHeading23" class="widget-head">
-                <a class="d-flex align-items-center justify-content-between text-dark"  data-toggle="collapse" data-target="#widgetCollapse23" aria-expanded="true" aria-controls="widgetCollapse23">
-                  <h3 class="widget-title mb-0 font-weight-medium font-size-3">Format</h3>
-                  <svg class="mins" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="2px">
-                    <path fill-rule="evenodd" fill="rgb(22, 22, 25)" d="M0.000,-0.000 L15.000,-0.000 L15.000,2.000 L0.000,2.000 L0.000,-0.000 Z" />
-                  </svg>
-                  <svg class="plus" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px">
-                    <path fill-rule="evenodd" fill="rgb(22, 22, 25)" d="M15.000,8.000 L9.000,8.000 L9.000,15.000 L7.000,15.000 L7.000,8.000 L0.000,8.000 L0.000,6.000 L7.000,6.000 L7.000,-0.000 L9.000,-0.000 L9.000,6.000 L15.000,6.000 L15.000,8.000 Z" />
-                  </svg>
-                </a>
-              </div>
-              <div id="widgetCollapse23" class="mt-3 widget-content collapse show" aria-labelledby="widgetHeading23" data-parent="#widgetAccordion">
-                <ul class="product-categories">
-                  <li class="cat-item cat-item-9 cat-parent">
-                    <a href="v3.html">Audio CD</a>
-                  </li>
-                  <li class="cat-item cat-item-69 cat-parent">
-                    <a href="v3.html">Audio Book</a>
-                  </li>
-                  <li class="cat-item cat-item-65 cat-parent">
-                    <a href="v3.html">Hardcover</a>
-                  </li>
-                  <li class="cat-item cat-item-11 cat-parent"><a href="v3.html">Kindle Books</a>
-                  </li>
-                  <li class="cat-item cat-item-12"><a href="v3.html">Paperback</a></li>
-                </ul>
-              </div>
-            </div>
+
             <div id="woocommerce_price_filter-2" class="widget p-4d875 border woocommerce widget_price_filter">
               <div id="widgetHeadingTwo" class="widget-head">
                 <a class="d-flex align-items-center justify-content-between text-dark"  data-toggle="collapse" data-target="#widgetCollapseTwo" aria-expanded="true" aria-controls="widgetCollapseTwo">
@@ -1409,150 +1278,7 @@ Remember me
                 </form>
               </div>
             </div>
-            <div id="Review" class="widget p-4d875 border">
-              <div id="widgetHeading24" class="widget-head">
-                <a class="d-flex align-items-center justify-content-between text-dark"  data-toggle="collapse" data-target="#widgetCollapse24" aria-expanded="true" aria-controls="widgetCollapse24">
-                  <h3 class="widget-title mb-0 font-weight-medium font-size-3">By Review</h3>
-                  <svg class="mins" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="2px">
-                    <path fill-rule="evenodd" fill="rgb(22, 22, 25)" d="M0.000,-0.000 L15.000,-0.000 L15.000,2.000 L0.000,2.000 L0.000,-0.000 Z" />
-                  </svg>
-                  <svg class="plus" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px">
-                    <path fill-rule="evenodd" fill="rgb(22, 22, 25)" d="M15.000,8.000 L9.000,8.000 L9.000,15.000 L7.000,15.000 L7.000,8.000 L0.000,8.000 L0.000,6.000 L7.000,6.000 L7.000,-0.000 L9.000,-0.000 L9.000,6.000 L15.000,6.000 L15.000,8.000 Z" />
-                  </svg>
-                </a>
-              </div>
-              <div id="widgetCollapse24" class="mt-4 widget-content collapse show" aria-labelledby="widgetHeading24" data-parent="#widgetAccordion">
-                <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-2 pb-1">
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="rating5">
-                    <label class="custom-control-label" for="rating5">
-<span class="d-block text-yellow-darker mt-plus-3">
-<span class="fas fa-star font-size-2 mr-1"></span>
-<span class="fas fa-star font-size-2 mr-1"></span>
-<span class="fas fa-star font-size-2 mr-1"></span>
-<span class="fas fa-star font-size-2 mr-1"></span>
-<span class="fas fa-star font-size-2 "></span>
-</span>
-                    </label>
-                  </div>
-                  <small class="font-size-2 text-gray-600">24</small>
-                </div>
-                <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-2 pb-1">
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="rating4">
-                    <label class="custom-control-label" for="rating4">
-<span class="d-block text-yellow-darker mt-plus-3">
-<span class="fas fa-star font-size-2 mr-1"></span>
-<span class="fas fa-star font-size-2 mr-1"></span>
-<span class="fas fa-star font-size-2 mr-1"></span>
-<span class="fas fa-star font-size-2 mr-1"></span>
-<span class="far fa-star font-size-2 "></span>
-</span>
-                    </label>
-                  </div>
-                  <small class="font-size-2 text-gray-600">15</small>
-                </div>
-                <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-2 pb-1">
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="rating3">
-                    <label class="custom-control-label" for="rating3">
-<span class="d-block text-yellow-darker mt-plus-3">
-<span class="fas fa-star font-size-2 mr-1"></span>
-<span class="fas fa-star font-size-2 mr-1"></span>
-<span class="fas fa-star font-size-2 mr-1"></span>
-<span class="far fa-star font-size-2 mr-1"></span>
-<span class="far fa-star font-size-2 "></span>
-</span>
-                    </label>
-                  </div>
-                  <small class="font-size-2 text-gray-600">43</small>
-                </div>
-                <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-2 pb-1">
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="rating2">
-                    <label class="custom-control-label" for="rating2">
-<span class="d-block text-yellow-darker mt-plus-3">
-<span class="fas fa-star font-size-2 mr-1"></span>
-<span class="fas fa-star font-size-2 mr-1"></span>
-<span class="far fa-star font-size-2 mr-1"></span>
-<span class="far fa-star font-size-2 mr-1"></span>
-<span class="far fa-star font-size-2"></span>
-</span>
-                    </label>
-                  </div>
-                  <small class="font-size-2 text-gray-600">78</small>
-                </div>
-                <div class="form-group d-flex align-items-center justify-content-between font-size-1 text-lh-md text-secondary mb-0">
-                  <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="rating1">
-                    <label class="custom-control-label" for="rating1">
-<span class="d-block text-yellow-darker mt-plus-3">
-<span class="fas fa-star font-size-2 mr-1"></span>
-<span class="far fa-star font-size-2 mr-1"></span>
-<span class="far fa-star font-size-2 mr-1"></span>
-<span class="far fa-star font-size-2 mr-1"></span>
-<span class="far fa-star font-size-2"></span>
-</span>
-                    </label>
-                  </div>
-                  <small class="font-size-2 text-gray-600">21</small>
-                </div>
-              </div>
-            </div>
-            <div id="Featuredbooks" class="widget p-4d875 border">
-              <div id="widgetHeading25" class="widget-head">
-                <a class="d-flex align-items-center justify-content-between text-dark"  data-toggle="collapse" data-target="#widgetCollapse25" aria-expanded="true" aria-controls="widgetCollapse25">
-                  <h3 class="widget-title mb-0 font-weight-medium font-size-3">Featured Books</h3>
-                  <svg class="mins" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="2px">
-                    <path fill-rule="evenodd" fill="rgb(22, 22, 25)" d="M0.000,-0.000 L15.000,-0.000 L15.000,2.000 L0.000,2.000 L0.000,-0.000 Z" />
-                  </svg>
-                  <svg class="plus" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px">
-                    <path fill-rule="evenodd" fill="rgb(22, 22, 25)" d="M15.000,8.000 L9.000,8.000 L9.000,15.000 L7.000,15.000 L7.000,8.000 L0.000,8.000 L0.000,6.000 L7.000,6.000 L7.000,-0.000 L9.000,-0.000 L9.000,6.000 L15.000,6.000 L15.000,8.000 Z" />
-                  </svg>
-                </a>
-              </div>
-              <div id="widgetCollapse25" class="mt-5 widget-content collapse show" aria-labelledby="widgetHeading25" data-parent="#widgetAccordion">
-                <div class="mb-5">
-                  <div class="media d-md-flex">
-                    <a class="d-block" href="single-product-v3.html">
-                      <img class="img-fluid" src="https://placehold.it/60x92" alt="Image-Description">
-                    </a>
-                    <div class="media-body ml-3 pl-1">
-                      <h6 class="font-size-2 text-lh-md font-weight-normal">
-                        <a href="single-product-v3.html">Lessons Learned from 15 Years as CEO...</a>
-                      </h6>
-                      <span class="font-weight-medium">$37</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="mb-5">
-                  <div class="media d-md-flex">
-                    <a class="d-block" href="single-product-v3.html">
-                      <img class="img-fluid" src="https://placehold.it/60x92" alt="Image-Description">
-                    </a>
-                    <div class="media-body ml-3 pl-1">
-                      <h6 class="font-size-2 text-lh-md font-weight-normal">
-                        <a href="single-product-v3.html">Love, Livestock, and Big Life Lessons...</a>
-                      </h6>
-                      <span class="font-weight-medium">$21</span>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <div class="media d-md-flex">
-                    <a class="d-block" href="single-product-v3.html">
-                      <img class="img-fluid" src="https://placehold.it/60x92" alt="Image-Description">
-                    </a>
-                    <div class="media-body ml-3 pl-1">
-                      <h6 class="font-size-2 text-lh-md font-weight-normal">
-                        <a href="single-product-v3.html">Sleeper Cells, Ghost Stories, and Hunt...</a>
-                      </h6>
-                      <span class="font-weight-medium">$182</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+
           </div>
         </div>
       </div>
@@ -1833,6 +1559,9 @@ export default defineComponent({
     const subtotal = computed(() =>
         store.getters.getTotalCost
     )
+    const removeProductFromCart = (book) => {
+      store.commit('REMOVE_PRODUCT_FROM_CART', book)
+    }
 
 
     onMounted(() => {
@@ -1845,6 +1574,7 @@ export default defineComponent({
         localStorage.setItem('reloaded', '1');
         location.reload();
       }
+
 
       fetchCategories()
       fetchBooks()
@@ -1879,7 +1609,7 @@ export default defineComponent({
       goToAbout,
       fetchBooks,
       goToContact,
-
+      removeProductFromCart
     }
   }
 })

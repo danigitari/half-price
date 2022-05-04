@@ -1435,6 +1435,7 @@ export default defineComponent({
     )
 
 
+
     onMounted(() => {
       fetchCategories()
 
@@ -1455,7 +1456,8 @@ export default defineComponent({
       goToShop,
       goToCart,
       goToAbout,
-      goToContact
+      goToContact,
+
 
     }
   }

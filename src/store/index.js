@@ -33,6 +33,12 @@ const store = createStore({
         REMOVE_FROM_CART(state, book) {
             state.cart.splice(book)
         },
+        REMOVE_PRODUCT_FROM_CART(state, book) {
+            let cart = state.cart.filter(product =>
+                product.id != book.id
+            )
+            state.cart = cart
+        },
         CLEAR_CART(state) {
             state.cart = []
         }
