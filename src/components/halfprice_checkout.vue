@@ -1158,7 +1158,7 @@
                             <label for="billing_first_name" class="form-label">First name <abbr class="required"
                                                                                                 title="required">*</abbr></label>
                             <Field v-model="billingformData.firstname" type="text" class="input-text form-control"
-                                   name="field" :rules="isRequired" id="billing_first_name" placeholder=""
+                                   name="field"  id="billing_first_name" placeholder=""
                                    autocomplete="given-name" autofocus="autofocus"/>
                           </p>
                           <p class="col-lg-6 mb-4d75 form-row form-row-last validate-required"
@@ -1892,7 +1892,7 @@ export default defineComponent({
     const referral_code = ref()
     const confirmReferralCode = () => {
       let reference = referral_code.value
-     axios.post('http://guarded-stream-16037.herokuapp.com/referenceCode' , reference , { headers: {'Content-Type': 'application/json'}}).then(response => {
+     axios.post('https://guarded-stream-16037.herokuapp.com/referenceCode' , reference , { headers: {'Content-Type': 'application/json'}}).then(response => {
        if (response.data == 'payment not found'){
          $('#notfound-modal').modal('show');
        }
@@ -1971,7 +1971,7 @@ export default defineComponent({
     const showPaymentModal = () => {
       makePayment()
       console.log(billingformData)
-      axios.post('http://guarded-stream-16037.herokuapp.com/halfprice', billingformData, {headers: {'Content-Type': 'application/json'}}).then(
+      axios.post('https://guarded-stream-16037.herokuapp.com/halfprice', billingformData, {headers: {'Content-Type': 'application/json'}}).then(
           response => {
             console.log(response.data)
           }
