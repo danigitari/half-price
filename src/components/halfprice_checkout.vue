@@ -203,35 +203,24 @@
           <div class="site-navigation mr-auto d-none d-xl-block">
             <ul class="nav">
               <li class="nav-item active">
-                <a href="#"
-                   class="nav-link link-black-100 mx-4 px-0 py-5 active font-weight-medium d-flex align-items-center ">
+                <a @click="goToHome" class="nav-link link-black-100 mx-4 px-0 py-5 active font-weight-medium d-flex align-items-center ">
                   Home
                 </a>
 
               </li>
               <!--<li class="nav-item"><a href="categories.html" class="nav-link link-black-100 mx-4 px-0 py-5 font-weight-medium">Categories</a></li>-->
               <li class="nav-item dropdown">
-                <a id="shopDropdownInvoker" href="shop.html"
-                   class="dropdown-toggle nav-link link-black-100 mx-4 px-0 py-5 font-weight-medium d-flex align-items-center border-bottom border-primary border-width-2"
-                   aria-haspopup="true" aria-expanded="false" data-unfold-event="hover"
-                   data-unfold-target="#shopDropdownMenu" data-unfold-type="css-animation" data-unfold-duration="200"
-                   data-unfold-delay="50" data-unfold-hide-on-scroll="true" data-unfold-animation-in="slideInUp"
-                   data-unfold-animation-out="fadeOut">
+                <a id="shopDropdownInvoker" @click="goToShop" class="dropdown-toggle nav-link link-black-100 mx-4 px-0 py-5 font-weight-medium d-flex align-items-center border-bottom border-primary border-width-2" aria-haspopup="true" aria-expanded="false" data-unfold-event="hover" data-unfold-target="#shopDropdownMenu" data-unfold-type="css-animation" data-unfold-duration="200" data-unfold-delay="50" data-unfold-hide-on-scroll="true" data-unfold-animation-in="slideInUp" data-unfold-animation-out="fadeOut">
                   Shop
                 </a>
-                <ul id="shopDropdownMenu" class="dropdown-unfold dropdown-menu font-size-2 rounded-0 border-gray-900"
-                    aria-labelledby="shopDropdownInvoker">
-                  <li><a href="cart.html" class="dropdown-item link-black-100">Shop cart</a></li>
+                <ul id="shopDropdownMenu" class="dropdown-unfold dropdown-menu font-size-2 rounded-0 border-gray-900" aria-labelledby="shopDropdownInvoker">
+                  <li><a @click="goToCart" class="dropdown-item link-black-100">Shop cart</a></li>
 
                 </ul>
               </li>
-              <li class="nav-item"><a href="about.html"
-                                      class="nav-link link-black-100 mx-4 px-0 py-5 font-weight-medium">About Us</a>
-              </li>
+              <li class="nav-item"><a @click="goToAbout" class="nav-link link-black-100 mx-4 px-0 py-5 font-weight-medium">About Us</a></li>
 
-              <li class="nav-item"><a href="contact.html"
-                                      class="nav-link link-black-100 mx-4 px-0 py-5 font-weight-medium">Contact Us</a>
-              </li>
+              <li class="nav-item"><a @click="goToContact"  class="nav-link link-black-100 mx-4 px-0 py-5 font-weight-medium">Contact Us</a></li>
             </ul>
           </div>
           <ul class="d-md-none nav mr-md-n3 ml-auto">
@@ -1149,7 +1138,7 @@
                 <div name="checkout" class="checkout woocommerce-checkout row mt-8" enctype="multipart/form-data"
                      novalidate="novalidate">
                   <div class="col2-set col-md-6 col-lg-7 col-xl-8 mb-6 mb-md-0" id="customer_details">
-                    <Form class="px-4 pt-5 bg-white border" v-slot="{ errors }">
+                    <Form class="px-4 pt-5 bg-white border">
                       <div class="woocommerce-billing-fields">
                         <h3 class="mb-4 font-size-3">Billing details</h3>
                         <div class="woocommerce-billing-fields__field-wrapper row">
@@ -1157,7 +1146,7 @@
                              id="billing_first_name_field" data-priority="10">
                             <label for="billing_first_name" class="form-label">First name <abbr class="required"
                                                                                                 title="required">*</abbr></label>
-                            <Field v-model="billingformData.firstname" type="text" class="input-text form-control"
+                            <input v-model="billingformData.firstname" type="text" class="input-text form-control"
                                    name="field"  id="billing_first_name" placeholder=""
                                    autocomplete="given-name" autofocus="autofocus"/>
                           </p>
@@ -1165,8 +1154,8 @@
                              id="billing_last_name_field" data-priority="20">
                             <label for="billing_last_name" class="form-label">Last name <abbr class="required"
                                                                                               title="required">*</abbr></label>
-                            <Field v-model="billingformData.lastname" type="text" class="input-text form-control"
-                                   name="field" :rules="isRequired" id="billing_last_name" placeholder=""
+                            <input v-model="billingformData.lastname" type="text" class="input-text form-control"
+                                   name="field"  id="billing_last_name" placeholder=""
                                    autocomplete="family-name"/>
                           </p>
                           <p class="col-12 mb-4d75 form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated"
@@ -1992,6 +1981,21 @@ export default defineComponent({
           }
       )
     }
+    const goToCart = () => {
+      router.push("/halfprice_cart")
+    }
+    const goToShop = () => {
+      router.push("/halfprice_shop")
+    }
+    const goToHome = () => {
+      router.push("/")
+    }
+    const goToAbout = () => {
+      router.push("/halfprice_about")
+    }
+    const goToContact = () => {
+      router.push("/halfprice_contact")
+    }
     onMounted(() => {
       if (localStorage.getItem('reloaded')) {
         // The page was just reloaded. Clear the value from local storage
@@ -2002,6 +2006,13 @@ export default defineComponent({
         localStorage.setItem('reloaded', '1');
         location.reload();
       }
+      billingformData.firstname = ''
+      billingformData.phone = ''
+      billingformData.lastname = ''
+      billingformData.country = ''
+      billingformData.town = ''
+      billingformData.email = ''
+
     })
 
     return {
@@ -2023,6 +2034,11 @@ export default defineComponent({
       confirmReferralCode,
       closeErrorModal,
       closeNotFound,
+      goToHome,
+      goToShop,
+      goToCart,
+      goToAbout,
+      goToContact
 
     }
   }
