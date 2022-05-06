@@ -23,7 +23,10 @@ const routes = [
     {
         path:'/halfprice_shop',
         name:'halfprice_shop',
-        component:Shop
+        component:Shop,
+        props: route => {
+            return route.params.search_term //  '[object Object]'
+        },
     },
     {
         path:'/halfprice_about',

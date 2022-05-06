@@ -138,19 +138,32 @@
             <form class="form-inline">
               <div class="input-group">
                 <div class="input-group-prepend">
-                  <i class="glph-icon flaticon-loupe input-group-text py-2d75 bg-white-100 border-white-100"></i>
                 </div>
-                <input class="form-control bg-white-100 min-width-380 py-2d75 height-4 border-white-100" type="search"
-                       placeholder="Search for Books" aria-label="Search">
+
+                <input v-model="search_term" class="form-control bg-white-100 min-width-380 py-2d75 height-4 border-white-100" type="search" placeholder="Search for Books" aria-label="Search">
+                <i @click="search(search_term)" class="glph-icon flaticon-loupe input-group-text py-2d75 border-gray-800"></i>
               </div>
-              <button class="btn btn-outline-success my-2 my-sm-0 sr-only" type="submit">Search</button>
+              <button class="btn btn-success my-2 my-sm-0 sr-only" >Search</button>
             </form>
           </div>
         </div>
       </div>
     </div>
   </header>
+  <div id="notification-modal" class="modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
 
+        <div class="modal-body ">
+          <div class=" " style="font-size: 15px">
+            successfully added to cart
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
   <aside id="sidebarContent9" class="u-sidebar u-sidebar__lg" aria-labelledby="sidebarNavToggler9">
     <div class="u-sidebar__scroller">
       <div class="u-sidebar__container">
@@ -356,8 +369,6 @@ Remember me
               <span aria-hidden="true">Close <i class="fas fa-times ml-2"></i></span>
             </button>
           </div>
-
-
           <div class="u-sidebar__body">
             <div class="u-sidebar__content u-header-sidebar__content">
 
@@ -386,7 +397,7 @@ Remember me
                   <!--                      {{ book.author }}</a></div>-->
                   <!--                    <div class="price d-flex align-items-center font-weight-medium font-size-3">-->
                   <!--                      <span class="woocommerce-Price-amount amount">{{ book.quantity }} x <span-->
-                  <!--                          class="woocommerce-Price-currencySymbol">$</span>{{ book.price }}</span>-->
+                  <!--                          class="woocommerce-Price-currencySymbol">Ksh </span>{{ book.price }}</span>-->
                   <!--                    </div>-->
                   <!--                  </div>-->
                   <div class="media-body ml-3 woocommerce-mini-cart-item__content">
@@ -414,12 +425,12 @@ Remember me
               </div>
               <div class="px-4 py-5 px-md-6 d-flex justify-content-between align-items-center font-size-3">
                 <h4 class="mb-0 font-size-3">Subtotal:</h4>
-                <div class="font-weight-medium"> {{ subtotal }}</div>
+                <div class="font-weight-medium"> Ksh {{ subtotal }}</div>
               </div>
               <div class="px-4 mb-8 px-md-6">
-                <!--                <button type="submit" class="btn btn-block py-4 rounded-0 btn-outline-dark mb-4">View Cart</button>-->
+                <button @click="router.push({name: 'halfprice_cart'})" type="submit" class="btn btn-block py-4 rounded-0 btn-outline-dark mb-4">View Cart</button>
                 <button type="submit" class="btn btn-block py-4 rounded-0 btn-dark"
-                        @click="router.push({ name: 'halfprice_cart', params: { books_in_cart,books} })">Checkout
+                        @click="router.push({ name: 'halfprice_checkout', params: { books_in_cart,books} })">Checkout
                 </button>
               </div>
             </div>
@@ -969,7 +980,7 @@ Remember me
                   <option value="3">Deutsch</option>
                 </select>
                 <select class="custom-select mb-4 rounded-0 pl-4 height-4 shadow-none text-dark">
-                  <option selected>$ USD</option>
+                  <option selected>Ksh  USD</option>
                   <option value="1">د.إ AED</option>
                   <option value="2">¥ CNY</option>
                   <option value="3">€ EUR</option>
@@ -1121,80 +1132,7 @@ Remember me
   </section>
   <section class="space-bottom-3">
     <div class="container">
-      <!--      <header class="mb-5 d-md-flex justify-content-between align-items-center">-->
-      <!--        <h2 class="font-size-7 mb-3 mb-md-0">Bestselling Books</h2>-->
-      <!--        <a  class="h-primary d-block">View All <i class="glyph-icon flaticon-next"></i></a>-->
-      <!--      </header>-->
-      <!--      <div class="js-slick-carousel products no-gutters border-top border-left border-right"-->
-      <!--           data-pagi-classes="d-xl-none text-center position-absolute right-0 left-0 u-slick__pagination mt-4 mb-0"-->
-      <!--           data-arrows-classes="d-none d-xl-block u-slick__arrow u-slick__arrow-centered&#45;&#45;y"-->
-      <!--           data-arrow-left-classes="fas fa-chevron-left u-slick__arrow-inner u-slick__arrow-inner&#45;&#45;left ml-lg-n10"-->
-      <!--           data-arrow-right-classes="fas fa-chevron-right u-slick__arrow-inner u-slick__arrow-inner&#45;&#45;right mr-lg-n10"-->
-      <!--           data-slides-show="5" data-responsive='[{-->
-      <!--                   "breakpoint": 1500,-->
-      <!--                   "settings": {-->
-      <!--                     "slidesToShow": 4-->
-      <!--                   }-->
-      <!--                },{-->
-      <!--                   "breakpoint": 1199,-->
-      <!--                   "settings": {-->
-      <!--                     "slidesToShow": 3-->
-      <!--                   }-->
-      <!--                },{-->
-      <!--                   "breakpoint": 992,-->
-      <!--                   "settings": {-->
-      <!--                     "slidesToShow": 2-->
-      <!--                   }-->
-      <!--                }, {-->
-      <!--                   "breakpoint": 768,-->
-      <!--                   "settings": {-->
-      <!--                     "slidesToShow": 1-->
-      <!--                   }-->
-      <!--                }, {-->
-      <!--                   "breakpoint": 554,-->
-      <!--                   "settings": {-->
-      <!--                     "slidesToShow": 1-->
-      <!--                   }-->
-      <!--                }]'>-->
 
-      <!--        <div class="product col" v-for="product in products" :key="product.id" >-->
-      <!--          <div class="product__inner overflow-hidden p-3 p-md-4d875">-->
-      <!--            <div class="woocommerce-LoopProduct-link woocommerce-loop-product__link d-block position-relative">-->
-      <!--              <div class="woocommerce-loop-product__thumbnail">-->
-      <!--                <a href="" class="d-block">-->
-      <!--                  <img :src=product.image-->
-      <!--                    class="img-fluid d-block mx-auto attachment-shop_catalog size-shop_catalog wp-post-image img-fluid"-->
-      <!--                    alt="image-description" style="height: 120px"></a>-->
-      <!--              </div>-->
-      <!--              <div class="woocommerce-loop-product__body product__body pt-3 bg-white">-->
-      <!--                <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="">Paperback</a>-->
-      <!--                </div>-->
-      <!--                <h2 class="woocommerce-loop-product__title product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark">-->
-      <!--                  <a href="">{{ product.name }}</a></h2>-->
-      <!--                <div class="font-size-2  mb-1 text-truncate"><a href=""-->
-      <!--                                                                class="text-gray-700">{{ product.author }}</a></div>-->
-      <!--                <div class="price d-flex align-items-center font-weight-medium font-size-3">-->
-      <!--                  <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>{{ product.price }}</span>-->
-      <!--                </div>-->
-      <!--              </div>-->
-      <!--              <div class="product__hover d-flex align-items-center">-->
-      <!--                <a @click="addToCart(product)"-->
-      <!--                   class="text-uppercase text-dark h-dark font-weight-medium mr-auto">-->
-      <!--                  <span class="product__add-to-cart">ADD TO CART </span>-->
-      <!--                  <span class="product__add-to-cart-icon font-size-4"><i class="flaticon-icon-126515"></i></span>-->
-      <!--                </a>-->
-      <!--                <a href="" class="mr-1 h-p-bg btn btn-outline-primary border-0">-->
-      <!--                  <i class="flaticon-switch"></i>-->
-      <!--                </a>-->
-      <!--                <a href="" class="h-p-bg btn btn-outline-primary border-0">-->
-      <!--                  <i class="flaticon-heart"></i>-->
-      <!--                </a>-->
-      <!--              </div>-->
-      <!--            </div>-->
-      <!--          </div>-->
-      <!--        </div>-->
-
-      <!--      </div>-->
     </div>
   </section>
   <section class="space-bottom-3">
@@ -1238,13 +1176,14 @@ Remember me
                       <a href="">
                         {{ product.name }}
                       </a></h2>
-                    <div class="font-size-2  mb-1 text-truncate"><a href="others/authors-single.html"
+                    <div class="font-size-2  mb-1 text-truncate"><a href=""
                                                                     class="text-gray-700">{{ product.author }}</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>{{ product.price }}</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>{{ product.price }}</span>
                     </div>
                   </div>
+                  <div style="margin-bottom: 5px"></div>
                   <div class="product__hover d-flex align-items-center">
                     <a @click="addToCart(product)"
                        class="text-uppercase text-dark h-dark font-weight-medium mr-auto" data-toggle="tooltip"
@@ -1284,7 +1223,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -1321,7 +1260,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -1358,7 +1297,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -1395,7 +1334,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -1433,7 +1372,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -1470,7 +1409,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -1507,7 +1446,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -1544,7 +1483,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -1582,7 +1521,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -1619,7 +1558,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -1656,7 +1595,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -1693,7 +1632,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -1735,7 +1674,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -1772,7 +1711,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -1809,7 +1748,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -1846,7 +1785,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -1884,7 +1823,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -1921,7 +1860,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -1958,7 +1897,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -1995,7 +1934,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -2033,7 +1972,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -2070,7 +2009,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -2107,7 +2046,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -2144,7 +2083,7 @@ Remember me
                                                                     class="text-gray-700">Jay Shetty</a></div>
                     <div class="price d-flex align-items-center font-weight-medium font-size-3">
                       <span class="woocommerce-Price-amount amount"><span
-                          class="woocommerce-Price-currencySymbol">$</span>29</span>
+                          class="woocommerce-Price-currencySymbol">Ksh </span>29</span>
                     </div>
                   </div>
                   <div class="product__hover d-flex align-items-center">
@@ -2209,10 +2148,10 @@ Remember me
                   <img src="assets/img/hfb_logo.webp">
                 </a>
                 <address class="font-size-2 mb-5">
-<span class="mb-2 font-weight-normal text-dark">
-BIHI Towers, Moi Avenue, 2nd Flr Shop No.5, Nairobi.
-Limuru Road, Village Market, New Wing, Nairobi, Kenya.
-</span>
+                  <span class="mb-2 font-weight-normal text-dark">
+                  BIHI Towers, Moi Avenue, 2nd Flr Shop No.5, Nairobi.
+                  Limuru Road, Village Market, New Wing, Nairobi, Kenya.
+                  </span>
                 </address>
                 <div class="mb-4">
                   <a href="mailto:sale@bookworm.com" class="font-size-2 d-block link-black-100 mb-1">halfpricebooks2019@gmail.com
@@ -2350,7 +2289,7 @@ Limuru Road, Village Market, New Wing, Nairobi, Kenya.
               <select class="js-select selectpicker dropdown-select ml-md-3"
                       data-style="border px-4 py-2 rounded-0 height-5 outline-none shadow-none form-control font-size-2"
                       data-dropdown-align-right="true" data-width="fit">
-                <option value="one" selected>$ USD</option>
+                <option value="one" selected>Ksh  USD</option>
                 <option value="two">KSH</option>
 
               </select>
@@ -2360,20 +2299,25 @@ Limuru Road, Village Market, New Wing, Nairobi, Kenya.
       </div>
     </div>
   </footer>
-
+  <Shop :search_term="home_search_term"/>
   </body>
 </template>
 <script>
 import Toastify from 'toastify-js'
 import {useRouter} from 'vue-router'
-import {onMounted, ref, defineComponent, computed, watch} from "vue";
+import {onMounted, ref, defineComponent, computed} from "vue";
 import CategoriesService from "../services/categories.service";
 import {useStore} from 'vuex'
 import BooksService from "@/services/books.service";
+import Shop from "./halfprice_shop"
 
 
 export default defineComponent({
   props: ['reload'],
+
+  components : {
+   Shop,
+  },
   setup: function () {
 
     const store = useStore()
@@ -2411,6 +2355,11 @@ export default defineComponent({
       }).showToast();
       console.log(books)
       console.log(books_in_cart)
+      $("#notification-modal").modal('show')
+      setTimeout(hideNotification, 1500)
+    }
+    const hideNotification = () => {
+      $("#notification-modal").modal('hide')
     }
     const books_in_cart = computed(() =>
         store.getters.getTotalCartItems
@@ -2422,11 +2371,14 @@ export default defineComponent({
     const removeProductFromCart = (book) => {
       store.commit('REMOVE_PRODUCT_FROM_CART', book)
     }
-
+    const totalProducts = ref()
+    const searchProducts = ref()
     const fetchBooks = async () => {
       BooksService.fetchBooks().then(response => {
         console.log(response.data)
         products.value = response.data
+        searchProducts.value = products.value
+        totalProducts.value = products.value.length
         console.log(products.value)
         let newProducts = products.value.forEach(product =>
             product.quantity = 0
@@ -2447,7 +2399,20 @@ export default defineComponent({
     const subtotal = computed(() =>
         store.getters.getTotalCost
     )
-
+    const search_term = ref()
+    const searching = ref(false)
+    const totalSearchProducts = ref()
+    const search = (search_term ) => {
+      router.push({name : 'halfprice_shop' , params : { search_term : search_term.value }})
+      searchProducts.value = products.value
+      // let filteredProducts = searchProducts.value.filter( product => {
+      //   return product.name.toLowerCase().includes(search_term) || product.author.toLowerCase().includes(search_term) || product.price.toLowerCase().includes(search_term) || product.category.toLowerCase().includes(search_term)
+      //
+      // })
+      // searchProducts.value = filteredProducts
+      // totalSearchProducts.value = searchProducts.value.length
+      // searching.value = true
+    }
 
     onMounted(() => {
       if (localStorage.getItem('reloaded')) {
@@ -2494,6 +2459,12 @@ export default defineComponent({
       goToAbout,
       fetchBooks,
       goToContact,
+      searching,
+      search_term,
+      totalSearchProducts,
+      search,
+      totalProducts,
+      searchProducts,
 
     }
   }
