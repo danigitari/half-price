@@ -291,41 +291,37 @@
             <div class="u-header-sidebar__footer-offset">
               <div class="u-sidebar__body">
                 <div class="u-sidebar__content u-header-sidebar__content">
-                  <header class="border-bottom px-4 px-md-5 py-4 d-flex align-items-center justify-content-between">
-                    <h2 class="font-size-3 mb-0">MENU</h2>
-                    <div class="d-flex align-items-center">
-                      <button type="button" class="close ml-auto target-of-invoker-has-unfolds"
-                              aria-controls="offcanvasNav" aria-haspopup="true" aria-expanded="false"
-                              data-unfold-event="click" data-unfold-hide-on-scroll="false"
-                              data-unfold-target="#offcanvasNav" data-unfold-type="css-animation"
-                              data-unfold-animation-in="fadeInLeft" data-unfold-animation-out="fadeOutLeft"
-                              data-unfold-duration="500">
-                        <span aria-hidden="true"><i class="fas fa-times ml-2"></i></span>
-                      </button>
-                    </div>
-                  </header>
-                  <div class="border-bottom">
-                    <div class="zeynep pt-4" style="transform: translateX(-295px); width: 295px;">
-                      <div class="menu-offcanvas-menu-container">
-                        <ul id="menu-offcanvas-menu" class="menu">
-                          <li id="menu-item-3698" class="menu-item menu-item-type-post_type menu-item-object-page"><a
-                              title="Store Locator" >Store
-                            Locator</a></li>
-                          <li id="menu-item-3699" class="menu-item menu-item-type-post_type menu-item-object-page"><a
-                              title="FAQ’s" >FAQ’s</a></li>
-                          <li id="menu-item-3700" class="menu-item menu-item-type-post_type menu-item-object-page"><a
-                              title="Shipping Policy" >Shipping
-                            Policy</a></li>
-                          <li id="menu-item-3701" class="menu-item menu-item-type-post_type menu-item-object-page"><a
-                              title="Terms and Conditions" >Terms
-                            and Conditions</a></li>
-                          <li id="menu-item-3702" class="menu-item menu-item-type-post_type menu-item-object-page"><a
-                              title="Contact Us" >Contact Us</a></li>
-                          <li id="menu-item-3703" class="menu-item menu-item-type-post_type menu-item-object-page"><a
-                              title="Refund and Returns Policy" > Refund
-                            and Returns Policy</a></li>
-                        </ul>
+                  <div class="u-sidebar__body">
+                    <div class="u-sidebar__content u-header-sidebar__content">
+
+                      <header class="border-bottom px-4 px-md-5 py-4 d-flex align-items-center justify-content-between">
+                        <h2 class="font-size-3 mb-0"> CATEGORIES </h2>
+
+                        <div class="d-flex align-items-center">
+                          <button type="button" class="close ml-auto" aria-controls="sidebarContent2" aria-haspopup="true"
+                                  aria-expanded="false" data-unfold-event="click" data-unfold-hide-on-scroll="false"
+                                  data-unfold-target="#sidebarContent2" data-unfold-type="css-animation"
+                                  data-unfold-animation-in="fadeInLeft" data-unfold-animation-out="fadeOutLeft"
+                                  data-unfold-duration="500">
+                            <span aria-hidden="true"><i class="fas fa-times ml-2"></i></span>
+                          </button>
+                        </div>
+
+                      </header>
+
+                      <div class="border-bottom">
+                        <div class="zeynep pt-4">
+                          <ul>
+                            <li class="has-submenu" v-for="(category,index) in categories" :key="index">
+                              <a href="#" data-submenu="off-pages">{{ category.name }}</a>
+
+                            </li>
+
+
+                          </ul>
+                        </div>
                       </div>
+
                     </div>
                   </div>
                 </div>
@@ -569,98 +565,67 @@
 
               <div class="u-sidebar__body">
                 <div class="u-sidebar__content u-header-sidebar__content">
+
                   <header class="border-bottom px-4 px-md-6 py-4">
-                    <h2 class="font-size-3 mb-0 d-flex align-items-center">
-                      <i class="flaticon-icon-126515 mr-3 font-size-5"></i>
-                      Your shopping bag (3)</h2>
+                    <h2 class="font-size-3 mb-0 d-flex align-items-center"><i
+                        class="flaticon-icon-126515 mr-3 font-size-5"></i>Your shopping bag ({{ books_in_cart }})</h2>
                   </header>
-                  <div class="widget woocommerce widget_shopping_cart">
 
 
-                    <div class="woocommerce-mini-cart ">
-                      <div class="woocommerce-mini-cart-item widget-cart-item py-3 border-bottom">
-                        <div class="media">
-                          <a
-                             class="woocommerce-mini-cart-item__thumbnail d-block">
-                            <!-- <img src="https://placehold.it/100x153" class="img-fluid" alt="image-description"> -->
-                            <img width="150" height="100"
-                                 src="https://i0.wp.com/halfpricedbooks.co.ke/wp-content/uploads/2022/04/chang-duong-398144-unsplash-scaled.jpg?fit=150%2C100&amp;ssl=1"
-                                 class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt=""
-                                 loading="lazy"
+                  <div class="px-4 py-5 px-md-6 border-bottom" v-for="book in books" :key="book.id">
+                    <div class="media">
+                      <a href="" class="d-block"><img :src=book.image class="img-fluid" width="120" height="183"
+                                                      alt="image-description"></a>
 
-                                 sizes="(max-width: 150px) 100vw, 150px"> </a>
-                          <div class="media-body ml-3 woocommerce-mini-cart-item__content">
-                            <div class="text-primary text-uppercase font-size-1 mb-1 text-truncate">
-                              <a >Africana</a></div>
-                            <h2 class="woocommerce-loop-product__title h6 text-lh-md mb-1 text-height-2 crop-text-2">
-                              <a class="text-dark">
-                                Alchemist </a>
-                            </h2>
-                            <div class="price d-flex align-items-center font-weight-medium font-size-3">
-                                <span class="woocommerce-Price-amount amount">
-                                    1 ×                                    <span
-                                    class="woocommerce-Price-amount amount"><span
-                                    class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;500</span>                                </span>
-                            </div>
-                          </div>
-                          <div class="mt-3 ml-3">
-                            <a
-                               class="remove remove_from_cart_button text-dark" aria-label="Remove this item"
-                               data-product_id="3982" data-cart_item_key="a0443c8c8c3372d662e9173c18faaa2c"
-                               data-product_sku="9780517638477-1"><i class="fas fa-times"></i></a></div>
-                        </div>
-                      </div>
-                      <div class="woocommerce-mini-cart-item widget-cart-item py-3 border-bottom">
-                        <div class="media">
-                          <a
-                             class="woocommerce-mini-cart-item__thumbnail d-block">
-                            <!-- <img src="https://placehold.it/100x153" class="img-fluid" alt="image-description"> -->
-                            <img width="150" height="150"
-                                 src="https://i0.wp.com/halfpricedbooks.co.ke/wp-content/uploads/woocommerce-placeholder.png?fit=150%2C150&amp;ssl=1"
-                                 class="woocommerce-placeholder wp-post-image" alt="Placeholder" loading="lazy"
 
-                                 sizes="(max-width: 150px) 100vw, 150px"> </a>
-                          <div class="media-body ml-3 woocommerce-mini-cart-item__content">
-                            <div class="text-primary text-uppercase font-size-1 mb-1 text-truncate">
-                              <a>Africana</a></div>
-                            <h2 class="woocommerce-loop-product__title h6 text-lh-md mb-1 text-height-2 crop-text-2">
-                              <a class="text-dark">
-                                false </a>
-                            </h2>
-                            <div class="price d-flex align-items-center font-weight-medium font-size-3">
-                                <span class="woocommerce-Price-amount amount">
-                                    2 ×                                    <span
-                                    class="woocommerce-Price-amount amount"><span
-                                    class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;10</span>                                </span>
-                            </div>
-                          </div>
-                          <div class="mt-3 ml-3">
-                            <a
-                               class="remove remove_from_cart_button text-dark" aria-label="Remove this item"
-                               data-product_id="4037" data-cart_item_key="d360a502598a4b64b936683b44a5523a"
-                               data-product_sku="9798666405161-1"><i class="fas fa-times"></i></a></div>
-                        </div>
+                      <!--                  <div class="media-body ml-4d875">-->
+                      <!--                    <div class="text-primary text-uppercase font-size-1 mb-1 text-truncate"><a href="">Hard-->
+                      <!--                      Cover</a></div>-->
+
+                      <!--                    <h2 class="woocommerce-loop-product__title h6 text-lh-md mb-1 text-height-2 crop-text-2">-->
+                      <!--                      <a href="" class="text-dark">{{-->
+                      <!--                          book.title-->
+                      <!--                        }}</a>-->
+                      <!--                    </h2>-->
+                      <!--                    <div class="font-size-2 mb-1 text-truncate"><a href="" class="text-gray-700">-->
+                      <!--                      {{ book.author }}</a></div>-->
+                      <!--                    <div class="price d-flex align-items-center font-weight-medium font-size-3">-->
+                      <!--                      <span class="woocommerce-Price-amount amount">{{ book.quantity }} x <span-->
+                      <!--                          class="woocommerce-Price-currencySymbol">Ksh </span>{{ book.price }}</span>-->
+                      <!--                    </div>-->
+                      <!--                  </div>-->
+                      <div class="media-body ml-3 woocommerce-mini-cart-item__content">
+                        <div class="text-primary text-uppercase font-size-1 mb-1 text-truncate">
+                          <a href="">{{ book.category }}</a></div>
+                        <h2 class="woocommerce-loop-product__title h6 ">
+                          <p href="">
+                            {{ book.name }} </p>
+                        </h2>
+                        <div class="font-size-2 mb-1 text-truncate"><a href="" class="text-gray-700">
+                          {{ book.author }}</a></div>
+                        <span class="woocommerce-Price-amount amount">
+                                    {{ book.quantity }} ×
+                    <span class="woocommerce-Price-amount amount">
+                    <span class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;{{ book.price }}</span>
+                  </span>
                       </div>
 
-                      <div
-                          class="woocommerce-mini-cart__subtotal py-3 d-flex justify-content-between align-items-center font-size-3">
-                        <h4 class="mb-0 font-size-3">Subtotal:</h4>
-                        <div class="font-weight-medium">
-                          <span class="woocommerce-Price-amount amount"><bdi><span
-                              class="woocommerce-Price-currencySymbol">KSh</span>&nbsp;520</bdi></span></div>
+
+
+                      <div class="mt-3 ml-3">
+                        <a href="" class="text-dark"><i @click="removeProductFromCart(book)" class="fas fa-times"></i></a>
                       </div>
-                      <div class="woocommerce-mini-cart__buttons">
-
-                        <a  class="btn btn-block rounded-0 btn-outline-dark">
-                          View Cart </a>
-                        <a  class="btn btn-block rounded-0 btn-dark">
-                          Checkout </a>
-
-                      </div>
-
                     </div>
-
-
+                  </div>
+                  <div class="px-4 py-5 px-md-6 d-flex justify-content-between align-items-center font-size-3">
+                    <h4 class="mb-0 font-size-3">Subtotal:</h4>
+                    <div class="font-weight-medium"> Ksh {{ subtotal }}</div>
+                  </div>
+                  <div class="px-4 mb-8 px-md-6">
+                    <button @click="router.push({name: 'halfprice_cart'})" type="submit" class="btn btn-block py-4 rounded-0 btn-outline-dark mb-4">View Cart</button>
+                    <button type="submit" class="btn btn-block py-4 rounded-0 btn-dark"
+                            @click="router.push({ name: 'halfprice_checkout', params: { books_in_cart,books} })">Checkout
+                    </button>
                   </div>
                 </div>
               </div>

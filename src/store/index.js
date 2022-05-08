@@ -5,6 +5,7 @@ const store = createStore({
     plugins: [createPersistedState()],
     state: {
         cart: [],
+        search_term : ''
     },
     getters: {
         getCartItems(state) {
@@ -17,6 +18,9 @@ const store = createStore({
             return state.cart.map(item => {
                 return item.quantity * item.price
             }).reduce((prev, curr) => prev + curr, 0)
+        },
+        getSearchTerm(state){
+            return state.search_term
         }
     },
 
@@ -28,6 +32,9 @@ const store = createStore({
             let cart = [...state.cart.reduce((map, obj) =>
                 map.set(obj.id, obj), new Map()).values()]
             state.cart = cart
+        },
+        GET_SEARCH_TERM(state, search_term){
+            state.search_term = search_term
         },
 
         REMOVE_FROM_CART(state, book) {
