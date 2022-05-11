@@ -925,7 +925,7 @@ Remember me
                       <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"
                             style="left: 0%;"></span><span class="ui-slider-handle ui-state-default ui-corner-all"
                                                            tabindex="0" style="left: 98%;"></span></div>
-                    <div class="price_slider_amount">
+                    <div class="price_slider_amount" data-step="10">
                       <input type="text" id="min_price" name="min_price" value="2" data-min="2" placeholder="Min price"
                              style="display: none;">
                       <input type="text" id="max_price" name="max_price" value="1495" data-max="1495"
@@ -1240,7 +1240,7 @@ export default defineComponent({
         searchProducts.value = products.value
         let filteredProducts = searchProducts.value.filter(product => product.status == "New")
         searchProducts.value = filteredProducts
-        totalSearchProducts.value = searchProducts.value.length
+        Object.assign(totalSearchProducts,filteredProducts.length)
       }
       if(option == 'high'){
 
@@ -1250,7 +1250,7 @@ export default defineComponent({
         sortByPriceLowToHigh()
       }
     }
-    const totalSearchProducts = ref()
+    const totalSearchProducts =computed(() => searchProducts.value.length)
     const books = computed(() =>
         store.getters.getCartItems)
 
@@ -1278,19 +1278,21 @@ export default defineComponent({
       searching.value = true
 
       searchProducts.value = products.value
+      console.log(searchProducts.value)
 
       let filteredProducts = searchProducts.value.filter(product => {
-        return product.name.toLowerCase().includes(search_term) || product.author.toLowerCase().includes(search_term) || product.price.toLowerCase().includes(search_term) || product.category.toLowerCase().includes(search_term)
+        return (product.name || '').toLowerCase().includes(search_term) || (product.author || '').toLowerCase().includes(search_term) || (product.price || '').toLowerCase().includes(search_term) || (product.category || '').toLowerCase().includes(search_term)
       })
       searchProducts.value = filteredProducts
-      totalSearchProducts.value = searchProducts.value.length
+      Object.assign(totalSearchProducts,filteredProducts.length)
+      // Object.assign(totalSearchProducts,filteredProducts.length)
       console.log("searched")
     }
     const sortByPriceHighToLow = () => {
       searchProducts.value = products.value
       let filteredProducts =  searchProducts.value.sort((higher,lower ) => lower.price - higher.price )
       searchProducts.value = filteredProducts
-      totalSearchProducts.value = searchProducts.value.length
+      Object.assign(totalSearchProducts,filteredProducts.length)
 
       console.log(filteredProducts)
 
@@ -1301,7 +1303,7 @@ export default defineComponent({
       let filteredProducts =  searchProducts.value.sort(( higher,lower ) => higher.price - lower.price )
       console.log(filteredProducts)
       searchProducts.value = filteredProducts
-      totalSearchProducts.value = searchProducts.value.length
+      Object.assign(totalSearchProducts,filteredProducts.length)
 
 
     }
@@ -1310,7 +1312,7 @@ export default defineComponent({
       searchProducts.value = products.value
       let filteredProducts = searchProducts.value.filter(product => product.category === category.name)
       searchProducts.value = filteredProducts
-      totalSearchProducts.value = searchProducts.value.length
+      Object.assign(totalSearchProducts,filteredProducts.length)
     }
     onMounted(async () => {
       if (localStorage.getItem('reloaded')) {
