@@ -130,8 +130,6 @@
 
               </li>
 
-              <!--<li class="nav-item"><a href="categories.html" class="nav-link link-black-100 mx-4 px-0 py-5 font-weight-medium">Categories</a></li>-->
-
               <li class="nav-item dropdown">
 
                 <a id="shopDropdownInvoker" @click="goToShop"
@@ -273,9 +271,9 @@
                           <input type="checkbox" class="custom-control-input" id="termsCheckbox" name="termsCheckbox"
                                  required>
                           <label class="custom-control-label" for="termsCheckbox">
-<span class="font-size-2 text-secondary-gray-700">
-Remember me
-</span>
+                              <span class="font-size-2 text-secondary-gray-700">
+                              Remember me
+                              </span>
                           </label>
                         </div>
                       </div>
@@ -1024,7 +1022,6 @@ export default defineComponent({
       $('#payment-modal').modal('hide');
 
     }
-
 
     const goToCart = () => {
       router.push("/halfprice_cart")

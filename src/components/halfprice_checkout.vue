@@ -572,7 +572,6 @@
     </div>
   </aside>
 
-
   <div class="page-header border-bottom">
     <div class="container">
       <div class="d-md-flex justify-content-between align-items-center py-4">
@@ -595,13 +594,6 @@
 
             <div class="entry-content">
               <div class="woocommerce">
-                <!--
-                 <div class="woocommerce-info p-4 bg-white border">Have a coupon?
-                <a class="showcoupon" data-toggle="collapse" href="checkout.html#collapseExample9" role="button" aria-expanded="false" aria-controls="collapseExample9">
-                Click here to enter your code
-                </a>
-                </div>
-                -->
                 <div id="collapseExample9" class="collapse checkout_coupon mt-4 p-4 bg-white border">
                   <div class="row d-flex">
                     <p class="col-md-4 d-inline form-row form-row-first mb-3 mb-md-0">
@@ -1369,7 +1361,6 @@ export default defineComponent({
     const router = useRouter()
     const isRequired = (value) => {
       return value ? true : 'This field is required';
-
     }
 
     const books = computed(() =>
@@ -1386,31 +1377,40 @@ export default defineComponent({
       $('#confirmation-modal').modal('show');
 
       // router.push("/order-received")
-
     }
 
     const formData = reactive({
-
-      Amount: 0,
-      Remarks: '',
-      TransactionDesc: '',
-      AccountReference: ''
+      amount: 0,
+      remarks: '',
+      description: '',
+      reference: '',
+      recipient_phone: '',
+      business_id: '',
+      recipient_name: 1,
     })
+    const auth = process.env.AUTH
     const iframe_url = ref("")
     const makePayment = () => {
-      // formData.Amount = subtotal.value
-      formData.Amount = subtotal.value
-      formData.Remarks = "cart items"
-      formData.TransactionDesc = "asdf"
+      formData.amount = subtotal.value
+      formData.recipient_phone = "0770797141"
+      formData.recipient_name = "daniel"
+      formData.remarks = "cart items"
+      formData.description = "asdf"
       formData.reference = "cart items"
-      const base64 = btoa(JSON.stringify(formData));
-      console.log("base64");
-      console.log("base64", base64);
-      console.log("Amount : ", formData.Amount)
-      console.log("Remarks : ", formData.Remarks)
-      console.log("TransactionDesc : ", formData.TransactionDesc)
-      console.log("AccountReference : ", formData.reference)
-      iframe_url.value = "https://swypepay.io/terra/#/iframe/" + base64;
+      formData.business_id = 1
+
+      axios.post('https://swypepay.io/gateway/public/api/v4/iframe-instance', formData , {headers: {
+          'Authorization': 'Bearer ' + auth,
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        }} ).then(
+          response => {
+            iframe_url.value = response.data.data.iframe_url
+
+          }
+      )
+      // formData.Amount = subtotal.value
+
     }
     const billingformData = reactive({
       firstname: '',
@@ -1420,7 +1420,7 @@ export default defineComponent({
       email: '',
       phone: '',
       town: '',
-      subtotal: subtotal
+      subtotal: subtotal.value
     })
     const closeModal = () => {
       $('#payment-modal').modal('hide');
@@ -1512,6 +1512,7 @@ export default defineComponent({
       goToShop,
       goToCart,
       goToAbout,
+      auth,
       goToContact,
 
 

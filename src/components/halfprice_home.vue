@@ -17,19 +17,6 @@
                 class="glph-icon flaticon-switch"></i></a></li>
             <li class="nav-item"><a href="" class="nav-link link-black-100"><i
                 class="glph-icon flaticon-heart"></i></a></li>
-            <!--
-            <li class="nav-item">
-
-            <a id="sidebarNavToggler" href="javascript:;" role="button" class="nav-link link-black-100" aria-controls="sidebarContent" aria-haspopup="true" aria-expanded="false" data-unfold-event="click" data-unfold-hide-on-scroll="false" data-unfold-target="#sidebarContent" data-unfold-type="css-animation" data-unfold-overlay='{
-                                                "className": "u-sidebar-bg-overlay",
-                                                "background": "rgba(0, 0, 0, .7)",
-                                                "animationSpeed": 500
-                                            }' data-unfold-animation-in="fadeInRight" data-unfold-animation-out="fadeOutRight" data-unfold-duration="500">
-            <i class="glph-icon flaticon-user"></i>
-            </a>
-
-            </li>
-            -->
             <li class="nav-item">
 
               <a id="sidebarNavToggler1" href="javascript:;" role="button"
@@ -1903,7 +1890,7 @@
                 <input v-model="search_term"
                        class="form-control bg-white-100 min-width-380 py-2d75 height-4 border-white-100" type="search"
                        placeholder="Search for Books" aria-label="Search">
-                <i @click="search(search_term)"
+                <i @click="search"
                    class="glph-icon flaticon-loupe input-group-text py-2d75 border-gray-800"></i>
               </div>
               <button class="btn btn-success my-2 my-sm-0 sr-only">Search</button>
@@ -2745,10 +2732,10 @@ Remember me
                   <img src="assets/img/hfb_logo.webp">
                 </a>
                 <address class="font-size-2 mb-5">
-<span class="mb-2 font-weight-normal text-dark">
-BIHI Towers, Moi Avenue, 2nd Flr Shop No.5, Nairobi.
-Limuru Road, Village Market, New Wing, Nairobi, Kenya.
-</span>
+                    <span class="mb-2 font-weight-normal text-dark">
+                    BIHI Towers, Moi Avenue, 2nd Flr Shop No.5, Nairobi.
+                    Limuru Road, Village Market, New Wing, Nairobi, Kenya.
+                    </span>
                 </address>
                 <div class="mb-4">
                   <a href="mailto:sale@bookworm.com" class="font-size-2 d-block link-black-100 mb-1">halfpricebooks2019@gmail.com
@@ -3003,9 +2990,19 @@ export default defineComponent({
     const search = () => {
       store.commit('GET_SEARCH_TERM', search_term.value)
       router.push('/halfprice_shop')
+    //   searching.value = true
+    //   searchProducts.value = products.value
+    //   console.log(searchProducts.value)
+    //
+    //   let filteredProducts = searchProducts.value.filter(product => {
+    //     return (product.name || '').toLowerCase().includes(search_term.value) || (product.author || '').toLowerCase().includes(search_term.value) || (product.price || '').toLowerCase().includes(search_term.value) || (product.category || '').toLowerCase().includes(search_term.value)
+    //   })
+    //   searchProducts.value = filteredProducts
+    //   totalSearchProducts.value = filteredProducts.length
+    //   // Object.assign(totalSearchProducts,filteredProducts.length)
+    //
 
-    }
-
+  }
     onMounted(() => {
       if (localStorage.getItem('reloaded')) {
         // The page was just reloaded. Clear the value from local storage
@@ -3022,17 +3019,6 @@ export default defineComponent({
 
 
     })
-    // watch (
-    //     ()=> props.reload,
-    //     ()=> {
-    //       if(props.reload == true){
-    //
-    //         window.location.reload()
-    //       }
-    //     }
-    // )
-
-
     return {
       router,
       books,

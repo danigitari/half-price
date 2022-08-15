@@ -1,18 +1,14 @@
 <template>
   <body class="left-sidebar">
-
   <header id="site-header" class="site-header__v1">
     <div id="notification-modal" class="modal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog ">
         <div class="modal-content">
-
           <div class="modal-body ">
             <div class=" " style="font-size: 15px">
               successfully added to cart
             </div>
           </div>
-
-
         </div>
       </div>
     </div>
@@ -54,7 +50,11 @@
         </div>
       </div>
     </div>
-    <div class="masthead border-bottom position-relative" style="margin-bottom: -1px;">
+    <div class="masthead border-bottom position-relative" style="margin-bottom: -1px;"
+
+
+
+    >
       <div class="container-fluid px-3 px-md-5 px-xl-8d75 py-2 py-md-0">
         <div class="d-flex align-items-center position-relative flex-wrap">
           <div class="offcanvas-toggler mr-4 mr-lg-8">
@@ -341,7 +341,6 @@ Remember me
     </div>
   </aside>
 
-
   <aside id="sidebarContent1" class="u-sidebar u-sidebar__xl" aria-labelledby="sidebarNavToggler1">
     <div class="u-sidebar__scroller js-scrollbar">
       <div class="u-sidebar__container">
@@ -421,7 +420,6 @@ Remember me
       </div>
     </div>
   </aside>
-
 
   <aside id="sidebarContent2" class="u-sidebar u-sidebar__md u-sidebar--left" aria-labelledby="sidebarNavToggler2">
     <div class="u-sidebar__scroller js-scrollbar">
@@ -1267,12 +1265,12 @@ export default defineComponent({
     const search_term = ref()
     const searching = ref(false)
     const searchFilter = () => {
-      let searchTerm = computed(() => {
+      let searchTerm = computed(() =>
         store.getters.getSearchTerm
-      })
+      )
+      console.log('search term '  ,  searchTerm)
       search(searchTerm)
     }
-
     const search = (search_term) => {
 
       searching.value = true
@@ -1327,7 +1325,7 @@ export default defineComponent({
       await fetchCategories()
       await fetchBooks()
 
-
+      await searchFilter()
       console.log(unref(search_value))
 
       // await search(unref(search_value))
